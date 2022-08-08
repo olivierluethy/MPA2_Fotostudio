@@ -2,7 +2,8 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/hallo/welt' => 'WelcomeController@index',
+	'' => 'FotostudioController@index',
+	'index' => 'FotostudioController@index',
 ];
 
 $db = [

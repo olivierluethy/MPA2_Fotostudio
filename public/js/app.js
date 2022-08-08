@@ -1,2 +1,3 @@
-// Javascript
-console.info('JS geladen.');
+function home() {
+    location.href = "";
+}
