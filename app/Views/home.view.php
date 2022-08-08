@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!-- Navigation Bar -->
     <nav>
         <div class="part1" onclick="home()">
             <img src="assets/icon.png" alt="">
@@ -31,7 +32,95 @@
         </div>
     </nav>
 
-    <script src="public/js/app.js"></script>
+    <main>
+        <!-- Bilder -->
+        <div class="frame">
+            <img src="https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg"
+                alt="Mona Lisa" />
+            <div class="infobox">
+                <p>Titel:</p>
+                <p>{Titel}</p>
+                <p>Beschreibung:</p>
+                <p>{Beschreibung}</p>
+                <p>Datum:</p>
+                <p>{Datum}</p>
+                <p>Ort:</p>
+                <p>{Ort}</p>
+            </div>
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+            <div class="infobox">
+                <p>Titel:</p>
+                <p>{Titel}</p>
+                <p>Beschreibung:</p>
+                <p>{Beschreibung}</p>
+                <p>Datum:</p>
+                <p>{Datum}</p>
+                <p>Ort:</p>
+                <p>{Ort}</p>
+            </div>
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+            <div class="infobox">
+                <p>Titel:</p>
+                <p>{Titel}</p>
+                <p>Beschreibung:</p>
+                <p>{Beschreibung}</p>
+                <p>Datum:</p>
+                <p>{Datum}</p>
+                <p>Ort:</p>
+                <p>{Ort}</p>
+            </div>
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+            <div class="infobox">
+                <p>Titel:</p>
+                <p>{Titel}</p>
+                <p>Beschreibung:</p>
+                <p>{Beschreibung}</p>
+                <p>Datum:</p>
+                <p>{Datum}</p>
+                <p>Ort:</p>
+                <p>{Ort}</p>
+            </div>
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+            <div class="infobox">
+                <p>Titel:</p>
+                <p>{Titel}</p>
+                <p>Beschreibung:</p>
+                <p>{Beschreibung}</p>
+                <p>Datum:</p>
+                <p>{Datum}</p>
+                <p>Ort:</p>
+                <p>{Ort}</p>
+            </div>
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+        </div>
+        <div class="frame">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h1>Fotostudio</h1>
+        <p id="year"></p>
+    </footer>
+
+    <script src="public/js/main.js"></script>
 </body>
 
 </html>

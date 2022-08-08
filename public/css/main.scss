@@ -8,6 +8,10 @@ body {
         width: 100%;
         background-color: lightblue;
         box-shadow: 2px 3px 5px grey;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 100;
         .part1 {
             margin-left: 2rem;
             display: flex;
@@ -72,6 +76,94 @@ body {
                     border: 2px solid royalblue;
                 }
             }
+            button:nth-child(2) {
+                margin-right: 2.4rem;
+            }
         }
+    }
+    main {
+        margin-left: 2.8rem;
+        margin-top: 3rem;
+        /* Bildrahmen */
+        .frame {
+            background-color: #ddc;
+            border: solid 5vmin #eee;
+            border-bottom-color: #fff;
+            border-left-color: #eee;
+            border-radius: 2px;
+            border-right-color: #eee;
+            border-top-color: #ddd;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+            box-sizing: border-box;
+            display: inline-block;
+            height: 80vh;
+            padding: 8vmin;
+            position: relative;
+            text-align: center;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            &:before {
+                border-radius: 2px;
+                bottom: -2vmin;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25) inset;
+                content: "";
+                left: -2vmin;
+                position: absolute;
+                right: -2vmin;
+                top: -2vmin;
+            }
+            &:after {
+                border-radius: 2px;
+                bottom: -2.5vmin;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25);
+                content: "";
+                left: -2.5vmin;
+                position: absolute;
+                right: -2.5vmin;
+                top: -2.5vmin;
+            }
+            &:hover {
+                img {
+                    filter: blur(4px);
+                    -webkit-filter: blur(4px);
+                    transition-duration: 0.4s;
+                }
+                .infobox {
+                    display: block;
+                }
+            }
+            img {
+                border: solid 2px;
+                border-bottom-color: #ffe;
+                border-left-color: #eed;
+                border-right-color: #eed;
+                border-top-color: #ccb;
+                max-height: 100%;
+                max-width: 100%;
+                transition-duration: 0.4s;
+            }
+            .infobox {
+                background-color: gray;
+                margin-left: auto;
+                margin-right: auto;
+                position: absolute;
+                margin-top: -30rem;
+                border-radius: 25px;
+                width: 80%;
+                z-index: 99;
+                display: none;
+                opacity: .8;
+                cursor: context-menu;
+            }
+        }
+    }
+    footer {
+        text-align: center;
+        background-color: lightblue;
+        margin-top: auto;
+        padding: 0;
+        margin: 0;
     }
 }
