@@ -20,4 +20,10 @@ class Fotostudio
 		$statement->execute();
         return $statement;
 	}
+
+	public function getBenutzer(){
+		$statement = $this->db->prepare('SELECT benutzerId, username, email, role FROM benutzer');
+		$statement->execute();
+        return $statement;
+	}
 }

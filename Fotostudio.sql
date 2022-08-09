@@ -33,6 +33,10 @@ CREATE TABLE images (
 );
 
 /* Beispiel Daten */
-INSERT INTO `benutzer` (`benutzerId`, `username`, `email`, `password`, `created_at`) VALUES
-(1, 'LE FOU', 'olivier@kauz.ch', '$2y$10$y0xUU6lSEjcHPsx51kXfReInLBFC/6YgrXtjJM.mqLfykeR9eALJq', '2022-08-05 13:54:26'),
-(2, 'TestFaktor', 'test@test', '$2y$10$H6NDgXrwP82NF99WPDDwJeMy1FZTnsIVYcMc.dCKSSTFoILukq.Am', '2022-08-05 13:55:59');
+INSERT INTO `benutzer` (`benutzerId`, `username`, `email`, `password`, `role`, `created_at`) VALUES
+/* Owner */
+(1, 'LE FOU', 'olivier@kauz.ch', '$2y$10$y0xUU6lSEjcHPsx51kXfReInLBFC/6YgrXtjJM.mqLfykeR9eALJq', 1, '2022-08-05 13:54:26'),
+/* VIP */
+(2, 'TestFaktor', 'test@test.ch', '$2y$10$H6NDgXrwP82NF99WPDDwJeMy1FZTnsIVYcMc.dCKSSTFoILukq.Am', 2, '2022-08-05 13:55:59'),
+/* Normaler Benutzer */
+(3, 'Unendlich', 'spas@spas.ch', '$2y$10$H6NDgXrwP82NF99WPDDwJeMy1FZTnsIVYcMc.dCKSSTFoILukq.Am', '', '2022-08-05 13:55:59');

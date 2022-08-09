@@ -55,6 +55,10 @@ body {
                     font-style: italic;
                     color: white;
                 }
+                &.active {
+                    color: yellow;
+                    font-style: italic;
+                }
             }
             button {
                 background-color: royalblue;
@@ -170,5 +174,21 @@ body {
         margin-top: auto;
         padding: 0;
         margin: 0;
+    }
+    table,
+    td,
+    th {
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    table {
+        border-collapse: collapse;
+        width: 98%;
+        margin-top: 1rem;
+    }
+    th,
+    td {
+        padding: 15px;
+        color: white;
     }
 }

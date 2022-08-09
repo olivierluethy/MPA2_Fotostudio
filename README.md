@@ -14,3 +14,6 @@ https://getcssscan.com/css-box-shadow-examples
 
 For shadow on text:
 https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-shadow
+
+For Login Page:
+https://codepen.io/clln/pen/vYJWLqE

@@ -35,15 +35,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <h1>Fotostudio</h1>
         </div>
         <div class="part2">
-            <a href="">Home</a>
+            <a class="active" href="">Home</a>
             <?php
             /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 echo "<button onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
             }else{
-                echo "<a href=''>Benutzer verwalten</a>";
-                echo "<button>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                echo "<button onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
+                if($_SESSION['role'] == 1){
+                    echo "<a href='benutzerverwaltung'>Benutzer verwalten</a>";
+                }
+                if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
+                    echo "<button>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
+                    echo "<button onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
+                }
             }
             ?>
         </div>

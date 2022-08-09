@@ -6,51 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="public/css/main.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Login</title>
 </head>
 
 <body>
-    <main>
-        <div class="representation">
-            <div class="text1">
-                <h1>Discover a new era of being connected</h1>
-            </div>
-            <div class="text1 text2">
-                <h1>With Instakilo</h1>
-            </div>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="part1" onclick="home()">
+            <img src="assets/icon.png" alt="">
+            <h1>Fotostudio</h1>
         </div>
-        <div class="loginInput">
-            <h2>Instakilo</h2>
-            <h1>Welcome To Instakilo</h1>
-            <div class="switch">
-                <button id="registerButton" onclick="navSwitch(1)">Register</button>
-                <button id="loginButton" onclick="navSwitch(2)">Login</button>
-            </div>
+        <div class="part2">
+            <a href="home">Home</a>
+        </div>
+    </nav>
 
-            <form id="login" action="login" method="POST">
-                <label for="emailuser">Email or Username:</label><br>
-                <input type="text" id="emailuser" name="emailuser" placeholder="Enter Email or Username"><br>
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" placeholder="Enter Password"><br><br>
-                <input type="submit" value="Login">
+    <div class="login">
+        <div class="form">
+            <form id="login" class="login-form" action="login" method="POST">
+                <span class="material-icons"><i class='fas fa-lock'></i></span>
+                <?php
+                if(isset($_SESSION["emailDirection"])){
+                    echo "<input id='email' name='emailuser' value=" . $_SESSION["emailDirection"] . " type='email' placeholder='Enter Email' required
+                    pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' required />";
+                }else{
+                    echo "<input id='email' name='emailuser' type='email' placeholder='Enter Email' required
+                    pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' required />";
+                }
+                if(isset($_SESSION["passwordDirection"])){
+                    echo "<input id='password' name='password' value=" . $_SESSION["passwordDirection"] . " type='password' placeholder='Enter Password' required />";
+                }else {
+                    echo "<input id='password' name='password' type='password' placeholder='Enter Password' required />";
+                }
+                ?>
+                <button type="submit">Login</button>
             </form>
-
-            <form id="register" action="register" method="POST">
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" placeholder="Enter Email"><br>
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" placeholder="Enter Username"><br>
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" placeholder="Enter Email"><br>
-                <label for="verypass">Verify Password:</label><br>
-                <input type="password" id="verypass" name="verypass" placeholder="Enter Password again"><br><br>
-                <input type="submit" value="Login">
-            </form> 
         </div>
-    </main>
+    </div>
 
+    <!-- Footer -->
+    <footer>
+        <h1>Fotostudio</h1>
+        <p id="year"></p>
+    </footer>
+    
     <script src="public/js/login.js"></script>
+    <script src="public/js/main.js"></script>
 </body>
 
 </html>

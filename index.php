@@ -4,6 +4,7 @@ require 'core/bootstrap.php';
 $routes = [
 	'' => 'FotostudioController@index',
 	'home' => 'FotostudioController@index',
+	'benutzerverwaltung' => 'FotostudioController@benutzerverwaltung',
 
 	'login' => 'LoginController@login',
 	'logout' => 'LoginController@logout',

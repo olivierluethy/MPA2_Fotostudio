@@ -60,6 +60,10 @@ body nav .part2 a:hover {
   font-style: italic;
   color: white;
 }
+body nav .part2 a.active {
+  color: yellow;
+  font-style: italic;
+}
 body nav .part2 button {
   background-color: royalblue;
   border: 2px solid royalblue;
@@ -170,4 +174,20 @@ body footer {
   margin-top: auto;
   padding: 0;
   margin: 0;
+}
+body table,
+body td,
+body th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+body table {
+  border-collapse: collapse;
+  width: 98%;
+  margin-top: 1rem;
+}
+body th,
+body td {
+  padding: 15px;
+  color: white;
 }/*# sourceMappingURL=main.css.map */
