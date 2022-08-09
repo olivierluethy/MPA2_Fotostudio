@@ -43,4 +43,38 @@ class FotostudioController
 			header("location: login");
 		}
 	}
+
+	public function bild_hinzufuegen(){
+		// Initialize the session
+        session_start();
+
+		$Fotostudio = new Fotostudio();
+        $pdo = connectDatabase();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            /* For Image Upload */
+            if(count($_FILES) > 0) {
+                if(is_uploaded_file($_FILES['filename']['tmp_name'])) {
+                    $imgData =addslashes(file_get_contents($_FILES['filename']['tmp_name']));
+                    $imageProperties = getimageSize($_FILES['filename']['tmp_name']);
+
+					$titel = $_POST['titel'];
+					$beschreibung = $_POST['beschreibung'];
+					$datum = $_POST['datum'];
+					$ort = $_POST['ort'];
+					$oeffentlich = $_POST['oeffentlich'];
+					if ($oeffentlich == 'Yes') {
+						$oeffentlich = 1;
+					}else {
+						$oeffentlich = 0;
+					}
+
+            		$Fotostudio->bild_hinzufuegen($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties['mime'], $imgData, $_SESSION['id']);
+
+					header("location: home");
+				}
+			}
+		}
+	}
 }

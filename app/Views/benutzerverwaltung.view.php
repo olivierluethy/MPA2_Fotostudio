@@ -52,23 +52,44 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     <main>
         <?php
         if($benutzerCounter > 0){
-            echo "<h1 style='color: white;'>Benutzerverwaltung</h1>
+            echo "
+            <table class='header'>
+                <tr style='border:none;'>
+                    <th><h1 style='color: white;'>Benutzerverwaltung</h1></th>
+                    <th><button>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
+                </tr>
+            </table>
             <div style='overflow-x: auto;'>
                 <table>
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Savings</th>
+                        <th>ID</th>
+                        <th>Benutzername</th>
+                        <th>Email</th>
+                        <th>Rolle</th>
                         <th>Bearbeiten</th>
                         <th>Löschen</th>
                     </tr>";
                     foreach ($benutzer as $benutzer2){
-                        echo "<tr>
-                        <td>" . $benutzer2['benutzerId'] . "</td>
-                        <td>" . $benutzer2['username'] . "</td>
-                        <td>" . $benutzer2['email'] . "</td>
-                        <td>" . $benutzer2['role'] . "</td>
-                        </tr>";
+                        echo "<tr>";
+                        if($benutzer2['role'] == 1){
+                            echo "
+                            <td style='background-color: green;'>" . $benutzer2['benutzerId'] . "</td>
+                            <td style='background-color: green;'>" . $benutzer2['username'] . "</td>
+                            <td style='background-color: green;'>" . $benutzer2['email'] . "</td>
+                            <td style='background-color: green;'>Owner</td>
+                            <td style='background-color: green;'><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
+                            <td style='background-color: green;'><a onclick='deleteBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
+
+                        }else {
+                            echo "
+                            <td>" . $benutzer2['benutzerId'] . "</td>
+                            <td>" . $benutzer2['username'] . "</td>
+                            <td>" . $benutzer2['email'] . "</td>
+                            <td>VIP</td>
+                            <td><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
+                            <td><a onclick='deleteBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
+                        }
+                        echo "</tr>";
                     }
                 echo "</table>
             </div>";
