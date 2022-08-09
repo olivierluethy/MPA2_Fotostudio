@@ -159,6 +159,11 @@ body main .frame .infobox {
   opacity: 0.8;
   cursor: context-menu;
 }
+body main .noData {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+}
 body footer {
   text-align: center;
   background-color: lightblue;

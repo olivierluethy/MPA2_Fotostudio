@@ -4,3 +4,11 @@ document.getElementById('year').innerHTML = '&copy; ' + currentYear + ' Constant
 function home() {
     location.href = "";
 }
+
+function goToLogin() {
+    location.href = "login";
+}
+
+function goToLogOut() {
+    location.href = "logout";
+}

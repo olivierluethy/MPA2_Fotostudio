@@ -1,3 +1,19 @@
+<?php
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    $picOpenCounter = 0;
+
+    foreach ($picOpen as $picOpen2){
+        $picOpenCounter++;
+    }
+}else if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
+    $picAllCounter = 0;
+
+    foreach ($picAll as $picAll2){
+        $picAllCounter++;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +37,7 @@
         <div class="part2">
             <a href="">Home</a>
             <?php
+            /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 echo "<button onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
             }else{
@@ -34,84 +51,51 @@
 
     <main>
         <!-- Bilder -->
-        <div class="frame">
-            <img src="https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg"
-                alt="Mona Lisa" />
-            <div class="infobox">
-                <p>Titel:</p>
-                <p>{Titel}</p>
-                <p>Beschreibung:</p>
-                <p>{Beschreibung}</p>
-                <p>Datum:</p>
-                <p>{Datum}</p>
-                <p>Ort:</p>
-                <p>{Ort}</p>
-            </div>
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-            <div class="infobox">
-                <p>Titel:</p>
-                <p>{Titel}</p>
-                <p>Beschreibung:</p>
-                <p>{Beschreibung}</p>
-                <p>Datum:</p>
-                <p>{Datum}</p>
-                <p>Ort:</p>
-                <p>{Ort}</p>
-            </div>
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-            <div class="infobox">
-                <p>Titel:</p>
-                <p>{Titel}</p>
-                <p>Beschreibung:</p>
-                <p>{Beschreibung}</p>
-                <p>Datum:</p>
-                <p>{Datum}</p>
-                <p>Ort:</p>
-                <p>{Ort}</p>
-            </div>
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-            <div class="infobox">
-                <p>Titel:</p>
-                <p>{Titel}</p>
-                <p>Beschreibung:</p>
-                <p>{Beschreibung}</p>
-                <p>Datum:</p>
-                <p>{Datum}</p>
-                <p>Ort:</p>
-                <p>{Ort}</p>
-            </div>
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-            <div class="infobox">
-                <p>Titel:</p>
-                <p>{Titel}</p>
-                <p>Beschreibung:</p>
-                <p>{Beschreibung}</p>
-                <p>Datum:</p>
-                <p>{Datum}</p>
-                <p>Ort:</p>
-                <p>{Ort}</p>
-            </div>
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-        </div>
-        <div class="frame">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/71829/mona-lisa.jpg" alt="Mona Lisa" />
-        </div>
+        <?php
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+            if($picOpenCounter > 0){
+                foreach ($picOpen as $picOpen2){
+                    echo "
+                    <div class='frame'>
+                        <img src='https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg' alt='' />
+                        <div class='infobox'>
+                            <p>Titel:</p>
+                            <p>" . $picOpen2['titel'] . "</p>
+                            <p>Beschreibung:</p>
+                            <p>" . $picOpen2['beschreibung'] . "</p>
+                            <p>Datum:</p>
+                            <p>" . $picOpen2['datum'] . "</p>
+                            <p>Ort:</p>
+                            <p>" . $picOpen2['ort'] . "</p>
+                        </div>
+                    </div>";
+                }
+            }else {
+                echo "<h1 class='noData'>Keine öffentlichen Bilder vorhanden</h1>";
+            }
+        }else if (isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
+            if($picAllCounter > 0){
+                foreach ($picAll as $picAll2){
+                    echo "
+                    <div class='frame'>
+                        <img src='https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg' alt='' />
+                        <div class='infobox'>
+                            <p>Titel:</p>
+                            <p>" . $picAll2['titel'] . "</p>
+                            <p>Beschreibung:</p>
+                            <p>" . $picAll2['beschreibung'] . "</p>
+                            <p>Datum:</p>
+                            <p>" . $picAll2['datum'] . "</p>
+                            <p>Ort:</p>
+                            <p>" . $picAll2['ort'] . "</p>
+                        </div>
+                    </div>";
+                }
+            }else {
+                echo "<h1 class='noData'>Keine öffentliche oder private Bilder vorhanden</h1>";
+            }
+        }
+        ?>
     </main>
 
     <!-- Footer -->

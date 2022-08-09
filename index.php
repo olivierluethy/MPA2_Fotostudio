@@ -3,11 +3,14 @@ require 'core/bootstrap.php';
 
 $routes = [
 	'' => 'FotostudioController@index',
-	'index' => 'FotostudioController@index',
+	'home' => 'FotostudioController@index',
+
+	'login' => 'LoginController@login',
+	'logout' => 'LoginController@logout',
 ];
 
 $db = [
-	'name'     => 'tasklist',
+	'name'     => 'fotostudio',
 	'username' => 'root',
 	'password' => '',
 ];
