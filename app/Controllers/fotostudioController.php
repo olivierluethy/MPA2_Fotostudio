@@ -16,13 +16,16 @@ class FotostudioController
 		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			$picOpen = $Fotostudio -> picturesOpen();
         	$picOpen = $picOpen -> fetchAll();
-		}else if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true && ($_SESSION['role'] == 1 || $_SESSION['role'] == 2)){
+		}
+		/* Wenn Benutzer eingeloggt ist - entweder Rolle "Owner" oder "VIP" hat */
+		else if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true && ($_SESSION['role'] == 1 || $_SESSION['role'] == 2)){
 			$picAll = $Fotostudio -> allPictures();
         	$picAll = $picAll -> fetchAll();
 		}
 		require 'app/Views/home.view.php';
 	}
 
+	/* Alle Benutzer anzeigen - nur mit "Owner" Rolle möglich */
 	public function benutzerverwaltung(){
 		// Initialize the session
         session_start();
@@ -44,6 +47,7 @@ class FotostudioController
 		}
 	}
 
+	/* Bild hochladen - nur mit "Owner" oder "VIP" Rolle möglich */
 	public function bild_hinzufuegen(){
 		// Initialize the session
         session_start();
@@ -56,7 +60,7 @@ class FotostudioController
             /* For Image Upload */
             if(count($_FILES) > 0) {
                 if(is_uploaded_file($_FILES['filename']['tmp_name'])) {
-                    $imgData =addslashes(file_get_contents($_FILES['filename']['tmp_name']));
+                    $imgData = addslashes(file_get_contents($_FILES['filename']['tmp_name']));
                     $imageProperties = getimageSize($_FILES['filename']['tmp_name']);
 
 					$titel = $_POST['titel'];

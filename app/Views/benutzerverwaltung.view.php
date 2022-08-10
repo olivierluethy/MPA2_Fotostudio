@@ -42,7 +42,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                     echo "<a class='active' href='benutzerverwaltung'>Benutzer verwalten</a>";
                 }
                 if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
+                    echo "<button onclick='addImage()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
                     echo "<button onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
                 }
             }
@@ -98,6 +98,36 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
         }
         ?>
     </main>
+
+    <!-- Modal -->
+    <div id="myModal" class="addImage">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Bild hochladen</h2>
+            </div><br>
+            <div class="modal-body">
+                <form action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
+                    <label for="fname">Titel:</label><br>
+                    <input type="text" id="fname" name="titel"><br><br>
+                    <label for="lname">Beschreibung:</label><br>
+                    <textarea name="beschreibung" id="" cols="30" rows="10"></textarea><br><br>
+                    <label for="lname">Datum:</label><br>
+                    <input type="date" id="lname" name="datum"><br><br>
+                    <label for="lname">Ort:</label><br>
+                    <input type="text" id="lname" name="ort"><br><br>
+                    <label for="lname">Öffentlich:</label><br>
+                    <input type="checkbox" id="lname" value="Yes" name="oeffentlich"><br><br>
+                    <label for="file">Bild auswählen:</label><br>
+                    <input type="file" id="myFile" name="filename"><br><br>
+                    <input type="submit" value="Bild hochladen">
+                </form>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Footer -->
     <footer>

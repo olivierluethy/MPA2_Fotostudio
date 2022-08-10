@@ -58,10 +58,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <?php
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             if($picOpenCounter > 0){
+                echo "<h1 style='color: white; margin-bottom: 1rem;'>Öffentliche Bilder</h1>";
                 foreach ($picOpen as $picOpen2){
                     echo "
                     <div class='frame'>
-                        <img src='https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg' alt='' />
+                        <img src='data:" . $picOpen2['imageType'] . ";base64, ".base64_encode($picOpen2['imageData']). "'/>
                         <div class='infobox'>
                             <p>Titel:</p>
                             <p>" . $picOpen2['titel'] . "</p>
@@ -82,7 +83,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 foreach ($picAll as $picAll2){
                     echo "
                     <div class='frame'>
-                        <img src='data:" . $picAll2['imageType'] . ";app\Views\imageView.php?image_id=". $picAll2['imageId'] ."' alt='' />
+                        <img src='data:" . $picAll2['imageType'] . ";base64, ". base64_encode($picAll2['imageData']) . "'/>
                         <div class='infobox'>
                             <p>Titel:</p>
                             <p>" . $picAll2['titel'] . "</p>
