@@ -60,7 +60,7 @@ class FotostudioController
             /* For Image Upload */
             if(count($_FILES) > 0) {
                 if(is_uploaded_file($_FILES['filename']['tmp_name'])) {
-                    $imgData = addslashes(file_get_contents($_FILES['filename']['tmp_name']));
+                    $imgData = file_get_contents($_FILES['filename']['tmp_name']);
                     $imageProperties = getimageSize($_FILES['filename']['tmp_name']);
 
 					$titel = $_POST['titel'];
