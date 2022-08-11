@@ -101,4 +101,18 @@ class FotostudioController
             header('Location: benutzerverwaltung');
         }
 	}
+
+	public function deleteBenutzer(){
+		// Initialize the session
+        session_start();
+
+		$Fotostudio = new Fotostudio();
+        $pdo = connectDatabase();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$id = $_GET['id'];
+
+		$Fotostudio->deleteBenutzer($id);
+        
+        header('Location: benutzerverwaltung');	}
 }

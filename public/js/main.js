@@ -21,6 +21,10 @@ function addUser() {
     addUsers.style.display = "block";
 }
 
+function deleteBenutzer(id) {
+    location.href = "deleteBenutzer?id=" + id;
+}
+
 // Get the modal
 var addImages = document.getElementById("addImages");
 

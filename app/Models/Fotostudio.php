@@ -52,4 +52,10 @@ class Fotostudio
 		$statement->bindParam(':password', $hashed_password, PDO::PARAM_STR);
 		$statement->execute();
 	}
+
+	public function deleteBenutzer($id){
+		$statement = $this->db->prepare('DELETE FROM `benutzer` WHERE benutzerId = :id');
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+	}
 }

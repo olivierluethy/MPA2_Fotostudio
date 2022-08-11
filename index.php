@@ -8,6 +8,9 @@ $routes = [
 	'bild_hinzufuegen' => 'FotostudioController@bild_hinzufuegen',
 	'benutzer_hinzufuegen' => 'FotostudioController@benutzer_hinzufuegen',
 
+	'deleteBenutzer' => 'FotostudioController@deleteBenutzer',
+	'editBenutzer' => 'FotostudioController@editBenutzer',
+
 	'login' => 'LoginController@login',
 	'logout' => 'LoginController@logout',
 ];

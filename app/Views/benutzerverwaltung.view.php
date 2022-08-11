@@ -84,7 +84,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                             <td style='background-color: green;'>" . $benutzer2['email'] . "</td>
                             <td style='background-color: green;'>Owner</td>
                             <td style='background-color: green;'><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
-                            <td style='background-color: green;'><a onclick='deleteBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
+                            <td style='background-color: green;'>Nicht möglich!</td>";
 
                         }else {
                             echo "
