@@ -64,14 +64,28 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <div class='frame'>
                         <img src='data:" . $picOpen2['imageType'] . ";base64, ".base64_encode($picOpen2['imageData']). "'/>
                         <div class='infobox'>
-                            <p>Titel:</p>
-                            <p>" . $picOpen2['titel'] . "</p>
-                            <p>Beschreibung:</p>
-                            <p>" . $picOpen2['beschreibung'] . "</p>
-                            <p>Datum:</p>
-                            <p>" . $picOpen2['datum'] . "</p>
-                            <p>Ort:</p>
-                            <p>" . $picOpen2['ort'] . "</p>
+                            <table style='width:100%'>
+                                <tr>
+                                    <td><h3>Titel:</h3></td>
+                                    <td><h3>" . $picOpen2['titel'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Beschreibung:</h3></td>
+                                    <td><h3>" . $picOpen2['beschreibung'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                <td><h3>Datum:</h3></td>
+                                <td><h3>" . $picOpen2['datum'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                <td><h3>Ort:</h3></td>
+                                <td><h3>" . $picOpen2['ort'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                <td><h3>Veröffentlicht von:</h3></td>
+                                <td><h3>" . $picOpen2['username'] . "</h3></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>";
                 }
@@ -93,6 +107,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             <p>" . $picAll2['datum'] . "</p>
                             <p>Ort:</p>
                             <p>" . $picAll2['ort'] . "</p>
+                            <p>Veröffentlicht von:</p>
+                            <p>" . $picAll2['username'] . "</p>
                         </div>
                     </div>";
                 }

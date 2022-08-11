@@ -150,6 +150,11 @@ body main .frame:hover img {
 body main .frame:hover .infobox {
   display: block;
 }
+body main .frame:hover .infobox table,
+body main .frame:hover .infobox td,
+body main .frame:hover .infobox tr {
+  border: none;
+}
 body main .frame img {
   border: solid 2px;
   border-bottom-color: #ffe;

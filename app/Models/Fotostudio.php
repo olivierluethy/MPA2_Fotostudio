@@ -10,14 +10,16 @@ class Fotostudio
 
 	/* Öffentliche Bilder anzeigen - wenn nicht eingeloggt */
     public function picturesOpen(){
-        $statement = $this->db->prepare('SELECT * FROM images WHERE oeffentlich = 0');
+        $statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, benutzer.username FROM images
+		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId WHERE oeffentlich = 0');
 		$statement->execute();
         return $statement;
     }
 
 	/* Alle Bilder anzeigen - wenn eingeloggt ist*/
 	public function allPictures(){
-		$statement = $this->db->prepare('SELECT * FROM images');
+		$statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, benutzer.username FROM images
+		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId');
 		$statement->execute();
         return $statement;
 	}

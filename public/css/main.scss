@@ -137,6 +137,11 @@ body {
                 }
                 .infobox {
                     display: block;
+                    table,
+                    td,
+                    tr {
+                        border: none;
+                    }
                 }
             }
             img {
