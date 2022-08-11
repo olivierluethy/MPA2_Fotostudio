@@ -21,13 +21,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Allgemeines CSS -->
-    <link rel="stylesheet" href="public/css/main.css">
-    <link rel="stylesheet" href="public/css/navbar.css">
-    <!-- Für nur diese Seite -->
     <link rel="stylesheet" href="public/css/home.css">
-    <!-- Für Footer -->
-    <link rel="stylesheet" href="public/css/footer.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Fotostudio</title>
@@ -65,7 +59,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         /* Falls man nicht eingeloggt ist, werden nur öffentliche Bilder angezeigt */
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             if($picOpenCounter > 0){
-                echo "<h1 style='color: white; margin-bottom: 1rem;'>Öffentliche Bilder</h1>";
+                echo "<h1 class='oeffentlicheBilder'>Öffentliche Bilder</h1>";
                 foreach ($picOpen as $picOpen2){
                     echo "
                     <div class='frame'>
@@ -142,8 +136,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <!-- Modal -->
     <div id="addImages" class="addImages">
-
-        <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="closeImages">&times;</span>
@@ -167,7 +159,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 </form>
             </div>
         </div>
-
     </div>
     <!-- Footer -->
     <footer>

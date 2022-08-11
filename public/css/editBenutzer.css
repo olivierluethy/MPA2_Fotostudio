@@ -4,6 +4,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #292b31;
   /* Navigation Bar */
+  /* Footer */
 }
 body nav {
   display: flex;
@@ -88,59 +89,42 @@ body nav .part2 button:hover {
 body nav .part2 button:nth-child(2) {
   margin-right: 2.4rem;
 }
-body .login {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-body .login .form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  border-radius: 20px;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 100px silver;
-}
-body .login .form input {
-  outline: 0;
-  background: #f2f2f2;
+body form {
   width: 100%;
-  border: 0;
-  border-radius: 5px;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+  max-width: 500px;
+  margin: 50px auto;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0px 0px 96px 0px silver;
+  min-height: 250px;
+  padding: 40px;
 }
-body .login .form input:focus {
-  background: #dbdbdb;
+body form label {
+  font-size: 1.1rem;
 }
-body .login .form button {
-  text-transform: uppercase;
-  outline: 0;
-  background: #4b6cb7;
+body form input[type=text],
+body form input[type=email],
+body form input[type=password] {
   width: 100%;
-  border: 0;
-  border-radius: 5px;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  transition: all 0.3 ease;
+  height: 28px;
+  margin-bottom: 15px;
+  padding: 12px 10px;
+}
+body form input[type=submit] {
+  background-color: royalblue;
+  border: 2px solid royalblue;
+  color: white;
+  width: 50%;
+  padding: 16px 32px;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-duration: 0.4s;
   cursor: pointer;
 }
-body .login .form button:active {
-  background: #395591;
-}
-body .login .form span {
-  font-size: 75px;
-  color: #4b6cb7;
-}
-body .loginPasswordIsWrong {
-  text-align: center;
-  color: red;
+body form input[type=submit]:hover {
+  background-color: white;
+  color: royalblue;
+  border: 2px solid royalblue;
 }
 body footer {
   text-align: center;
@@ -148,4 +132,4 @@ body footer {
   margin-top: auto;
   padding: 0;
   margin: 0;
-}/*# sourceMappingURL=login.css.map */
+}/*# sourceMappingURL=editBenutzer.css.map */

@@ -1,182 +1,67 @@
-/* Benutzerverwaltung */
-
-.header {
-    width: 99.9%;
-    border: none;
-    margin-left: -1.2rem;
-    button {
-        background-color: gold;
-        border: 2px solid gold;
-        color: black;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        transition: 0.5s ease;
-        float: right;
-        &:hover {
-            background-color: black;
-            color: gold;
-            transition-duration: 0.4s;
-        }
-    }
-    td,
-    th {
-        border: none;
-    }
-}
-
-
-/* Benutzerverwaltung */
-
-table,
-td,
-th {
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-table {
-    border-collapse: collapse;
-    width: 98%;
-}
-
-th,
-td {
-    padding: 15px;
-    color: white;
-}
-
-
-/* Edit delete Button */
-
-.edit {
-    background-color: #4caf50;
-    border: 2px solid #4caf50;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    transition: 0.5s ease;
-    &:hover {
-        background-color: white;
-        color: #4caf50;
-        transition-duration: 0.4s;
-    }
-}
-
-.delete {
-    background-color: red;
-    border: 2px solid red;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.5s ease;
-    &:hover {
-        background-color: white;
-        color: red;
-    }
-}
-
-.changeform {
-    background-color: lightblue;
-    input[type=text],
-    input[type=email],
-    input[type=password] {
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #292b31;
+    /* Navigation Bar */
+    nav {
+        display: flex;
         width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-    }
-    input[type=submit] {
-        background-color: royalblue;
-        border: 2px solid royalblue;
-        color: white;
-        padding: 16px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        margin-left: 2rem;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-        &:hover {
-            background-color: lightblue;
-            color: royalblue;
-            border: 2px solid royalblue;
-        }
-    }
-}
-
-
-/* Modal um Bilder hochzuladen*/
-
-.addUsers {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    .modal-content {
-        position: relative;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 20%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s;
-        box-shadow: 0 0 30px #ccc;
-        .modal-header {
-            padding: 2px 16px;
-            background-color: lightblue;
-            color: white;
-            .closeUser {
-                color: white;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-                &:hover,
-                &:focus {
-                    color: #000;
-                    text-decoration: none;
-                    cursor: pointer;
+        background-color: lightblue;
+        box-shadow: 2px 3px 5px grey;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        .part1 {
+            margin-left: 2rem;
+            display: flex;
+            width: 20%;
+            cursor: pointer;
+            img {
+                object-fit: contain;
+                width: 20%;
+                margin-top: auto;
+                margin-bottom: auto;
+                min-width: 80px;
+                transition: 500ms;
+                &:hover {
+                    transform: scale(1.1);
+                    transition: 500ms;
+                }
+            }
+            h1 {
+                margin-top: auto;
+                margin-bottom: auto;
+                margin-left: 1rem;
+                transition-duration: 0.4s;
+                &:hover {
+                    text-shadow: 2px 2px lightgray;
                 }
             }
         }
-        .modal-body {
-            padding: 2px 16px;
-            input[type=text],
-            input[type=email],
-            input[type=password] {
-                width: 100%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                box-sizing: border-box;
+        .part2 {
+            width: 80%;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: right;
+            margin-right: 2rem;
+            a {
+                font-weight: bold;
+                text-decoration: none;
+                color: black;
+                margin-left: 2rem;
+                transition-duration: 0.4s;
+                &:hover {
+                    font-style: italic;
+                    color: white;
+                }
+                &.active {
+                    color: yellow;
+                    font-style: italic;
+                }
             }
-            input[type=submit] {
+            button {
                 background-color: royalblue;
                 border: 2px solid royalblue;
                 color: white;
@@ -196,7 +81,265 @@ td {
                     border: 2px solid royalblue;
                 }
             }
+            button:nth-child(2) {
+                margin-right: 2.4rem;
+            }
         }
+    }
+    main {
+        margin-left: 2.8rem;
+        margin-top: 3rem;
+        table:nth-child(1) {
+            width: 99.9%;
+            border: none;
+            margin-left: -1.2rem;
+            td,
+            th {
+                border: none;
+            }
+            tr {
+                th {
+                    button {
+                        background-color: gold;
+                        border: 2px solid gold;
+                        color: black;
+                        padding: 15px 32px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        transition: 0.5s ease;
+                        float: right;
+                        &:hover {
+                            background-color: black;
+                            color: gold;
+                            transition-duration: 0.4s;
+                        }
+                    }
+                }
+            }
+        }
+        table:nth-child(2) {
+            overflow-x: auto;
+            box-shadow: 5px 5px 10px silver;
+            border-collapse: collapse;
+            width: 98%;
+            tr {
+                td {
+                    a {
+                        .edit {
+                            background-color: #4caf50;
+                            border: 2px solid #4caf50;
+                            color: white;
+                            padding: 15px 32px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 16px;
+                            margin: 4px 2px;
+                            cursor: pointer;
+                            transition: 0.5s ease;
+                            &:hover {
+                                background-color: white;
+                                color: #4caf50;
+                                transition-duration: 0.4s;
+                            }
+                        }
+                        .delete {
+                            background-color: red;
+                            border: 2px solid red;
+                            color: white;
+                            padding: 15px 32px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 16px;
+                            cursor: pointer;
+                            transition: 0.5s ease;
+                            &:hover {
+                                background-color: white;
+                                color: red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        table {
+            th,
+            td {
+                padding: 15px;
+                color: white;
+            }
+        }
+        table,
+        td,
+        th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    }
+    /* Modal um Bilder hochzuladen*/
+    .addUsers {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 20%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+            box-shadow: 0 0 30px #ccc;
+            .modal-header {
+                padding: 2px 16px;
+                background-color: lightblue;
+                color: white;
+                .closeUser {
+                    color: white;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                    &:hover,
+                    &:focus {
+                        color: #000;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .modal-body {
+                padding: 2px 16px;
+                input[type=text],
+                input[type=email],
+                input[type=password] {
+                    width: 100%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    box-sizing: border-box;
+                }
+                input[type=submit] {
+                    background-color: royalblue;
+                    border: 2px solid royalblue;
+                    color: white;
+                    padding: 16px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    margin-left: 2rem;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    transition-duration: 0.4s;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: lightblue;
+                        color: royalblue;
+                        border: 2px solid royalblue;
+                    }
+                }
+            }
+        }
+    }
+    /* Modal um Bilder hochzuladen*/
+    .addImages {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 20%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+            box-shadow: 0 0 30px #ccc;
+            .modal-header {
+                padding: 2px 16px;
+                background-color: lightblue;
+                color: white;
+                .closeImages {
+                    color: white;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                    &:hover,
+                    &:focus {
+                        color: #000;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .modal-body {
+                padding: 2px 16px;
+                input[type=text],
+                input[type=email],
+                input[type=password] {
+                    width: 100%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    box-sizing: border-box;
+                }
+                input[type=submit] {
+                    background-color: royalblue;
+                    border: 2px solid royalblue;
+                    color: white;
+                    padding: 16px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    margin-left: 2rem;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    transition-duration: 0.4s;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: lightblue;
+                        color: royalblue;
+                        border: 2px solid royalblue;
+                    }
+                }
+            }
+        }
+    }
+    /* Footer */
+    footer {
+        text-align: center;
+        background-color: lightblue;
+        margin-top: auto;
+        padding: 0;
+        margin: 0;
     }
 }
 

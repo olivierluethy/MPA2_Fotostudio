@@ -1,5 +1,105 @@
-/* Bildrahmen */
-.frame {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #292b31;
+  /* Navigation Bar */
+  /* Modal um Bilder hochzuladen*/
+  /* Footer */
+}
+body nav {
+  display: flex;
+  width: 100%;
+  background-color: lightblue;
+  box-shadow: 2px 3px 5px grey;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+body nav .part1 {
+  margin-left: 2rem;
+  display: flex;
+  width: 20%;
+  cursor: pointer;
+}
+body nav .part1 img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 20%;
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 80px;
+  transition: 500ms;
+}
+body nav .part1 img:hover {
+  transform: scale(1.1);
+  transition: 500ms;
+}
+body nav .part1 h1 {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1rem;
+  transition-duration: 0.4s;
+}
+body nav .part1 h1:hover {
+  text-shadow: 2px 2px lightgray;
+}
+body nav .part2 {
+  width: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: right;
+  margin-right: 2rem;
+}
+body nav .part2 a {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  margin-left: 2rem;
+  transition-duration: 0.4s;
+}
+body nav .part2 a:hover {
+  font-style: italic;
+  color: white;
+}
+body nav .part2 a.active {
+  color: yellow;
+  font-style: italic;
+}
+body nav .part2 button {
+  background-color: royalblue;
+  border: 2px solid royalblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+body nav .part2 button:hover {
+  background-color: lightblue;
+  color: royalblue;
+  border: 2px solid royalblue;
+}
+body nav .part2 button:nth-child(2) {
+  margin-right: 2.4rem;
+}
+body main {
+  margin-left: 2.8rem;
+  margin-top: 3rem;
+  /* Bildrahmen */
+}
+body main .oeffentlicheBilder {
+  color: white;
+  margin-bottom: 1rem;
+}
+body main .frame {
   background-color: #ddc;
   border: solid 5vmin #eee;
   border-bottom-color: #fff;
@@ -16,10 +116,12 @@
   text-align: center;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  min-width: 30%;
+  max-height: 70vh;
   transition-duration: 0.4s;
   cursor: pointer;
 }
-.frame:before {
+body main .frame:before {
   border-radius: 2px;
   bottom: -2vmin;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25) inset;
@@ -29,7 +131,7 @@
   right: -2vmin;
   top: -2vmin;
 }
-.frame:after {
+body main .frame:after {
   border-radius: 2px;
   bottom: -2.5vmin;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
@@ -39,21 +141,21 @@
   right: -2.5vmin;
   top: -2.5vmin;
 }
-.frame:hover img {
+body main .frame:hover img {
   filter: blur(4px);
   -webkit-filter: blur(4px);
   transition-duration: 0.4s;
 }
-.frame:hover .infobox {
+body main .frame:hover .infobox {
   display: block;
   overflow-x: auto;
 }
-.frame:hover .infobox table,
-.frame:hover .infobox td,
-.frame:hover .infobox tr {
+body main .frame:hover .infobox table,
+body main .frame:hover .infobox td,
+body main .frame:hover .infobox tr {
   border: none;
 }
-.frame img {
+body main .frame img {
   border: solid 2px;
   border-bottom-color: #ffe;
   border-left-color: #eed;
@@ -63,16 +165,125 @@
   max-width: 100%;
   transition-duration: 0.4s;
 }
-.frame .infobox {
+body main .frame .infobox {
   background-color: gray;
   margin-left: auto;
   margin-right: auto;
   position: absolute;
   margin-top: -30rem;
   border-radius: 25px;
+  margin-top: -15rem;
   width: 80%;
   z-index: 99;
   display: none;
   opacity: 0.8;
   cursor: context-menu;
+}
+body main .frame .noData {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+}
+body .addImages {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+body .addImages .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 30px #ccc;
+}
+body .addImages .modal-content .modal-header {
+  padding: 2px 16px;
+  background-color: lightblue;
+  color: white;
+}
+body .addImages .modal-content .modal-header .closeImages {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+body .addImages .modal-content .modal-header .closeImages:hover, body .addImages .modal-content .modal-header .closeImages:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+body .addImages .modal-content .modal-body {
+  padding: 2px 16px;
+}
+body .addImages .modal-content .modal-body input[type=text],
+body .addImages .modal-content .modal-body input[type=email],
+body .addImages .modal-content .modal-body input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+body .addImages .modal-content .modal-body input[type=submit] {
+  background-color: royalblue;
+  border: 2px solid royalblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+body .addImages .modal-content .modal-body input[type=submit]:hover {
+  background-color: lightblue;
+  color: royalblue;
+  border: 2px solid royalblue;
+}
+body footer {
+  text-align: center;
+  background-color: lightblue;
+  margin-top: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }/*# sourceMappingURL=home.css.map */

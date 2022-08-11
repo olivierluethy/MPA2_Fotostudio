@@ -17,13 +17,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Allgemeines CSS -->
-    <link rel="stylesheet" href="public/css/main.css">
-    <link rel="stylesheet" href="public/css/navbar.css">
-    <!-- Für nur diese Seite -->
     <link rel="stylesheet" href="public/css/benutzerverwaltung.css">
-    <!-- Für Footer -->
-    <link rel="stylesheet" href="public/css/footer.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Benutzerverwaltung</title>
@@ -59,13 +53,12 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
         <?php
         if($benutzerCounter > 0){
             echo "
-            <table class='header'>
+            <table>
                 <tr style='border:none;'>
                     <th><h1 style='color: white;'>Benutzerverwaltung</h1></th>
                     <th><button onclick='addUser()'>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
                 </tr>
             </table>
-            <div style='overflow-x: auto;'>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -97,8 +90,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                         }
                         echo "</tr>";
                     }
-                echo "</table>
-            </div>";
+                echo "</table>";
         }else {
             echo "<h1 class='noData'>Noch keine Benutzer vorhanden</h1>";
         }

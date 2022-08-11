@@ -1,10 +1,110 @@
-/* Benutzerverwaltung */
-.header {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #292b31;
+  /* Navigation Bar */
+  /* Modal um Bilder hochzuladen*/
+  /* Modal um Bilder hochzuladen*/
+  /* Footer */
+}
+body nav {
+  display: flex;
+  width: 100%;
+  background-color: lightblue;
+  box-shadow: 2px 3px 5px grey;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+body nav .part1 {
+  margin-left: 2rem;
+  display: flex;
+  width: 20%;
+  cursor: pointer;
+}
+body nav .part1 img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 20%;
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 80px;
+  transition: 500ms;
+}
+body nav .part1 img:hover {
+  transform: scale(1.1);
+  transition: 500ms;
+}
+body nav .part1 h1 {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1rem;
+  transition-duration: 0.4s;
+}
+body nav .part1 h1:hover {
+  text-shadow: 2px 2px lightgray;
+}
+body nav .part2 {
+  width: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: right;
+  margin-right: 2rem;
+}
+body nav .part2 a {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  margin-left: 2rem;
+  transition-duration: 0.4s;
+}
+body nav .part2 a:hover {
+  font-style: italic;
+  color: white;
+}
+body nav .part2 a.active {
+  color: yellow;
+  font-style: italic;
+}
+body nav .part2 button {
+  background-color: royalblue;
+  border: 2px solid royalblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+body nav .part2 button:hover {
+  background-color: lightblue;
+  color: royalblue;
+  border: 2px solid royalblue;
+}
+body nav .part2 button:nth-child(2) {
+  margin-right: 2.4rem;
+}
+body main {
+  margin-left: 2.8rem;
+  margin-top: 3rem;
+}
+body main table:nth-child(1) {
   width: 99.9%;
   border: none;
   margin-left: -1.2rem;
 }
-.header button {
+body main table:nth-child(1) td,
+body main table:nth-child(1) th {
+  border: none;
+}
+body main table:nth-child(1) tr th button {
   background-color: gold;
   border: 2px solid gold;
   color: black;
@@ -18,37 +118,18 @@
   transition: 0.5s ease;
   float: right;
 }
-.header button:hover {
+body main table:nth-child(1) tr th button:hover {
   background-color: black;
   color: gold;
   transition-duration: 0.4s;
 }
-.header td,
-.header th {
-  border: none;
-}
-
-/* Benutzerverwaltung */
-table,
-td,
-th {
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-table {
+body main table:nth-child(2) {
+  overflow-x: auto;
+  box-shadow: 5px 5px 10px silver;
   border-collapse: collapse;
   width: 98%;
 }
-
-th,
-td {
-  padding: 15px;
-  color: white;
-}
-
-/* Edit delete Button */
-.edit {
+body main table:nth-child(2) tr td a .edit {
   background-color: #4caf50;
   border: 2px solid #4caf50;
   color: white;
@@ -61,13 +142,12 @@ td {
   cursor: pointer;
   transition: 0.5s ease;
 }
-.edit:hover {
+body main table:nth-child(2) tr td a .edit:hover {
   background-color: white;
   color: #4caf50;
   transition-duration: 0.4s;
 }
-
-.delete {
+body main table:nth-child(2) tr td a .delete {
   background-color: red;
   border: 2px solid red;
   color: white;
@@ -79,45 +159,22 @@ td {
   cursor: pointer;
   transition: 0.5s ease;
 }
-.delete:hover {
+body main table:nth-child(2) tr td a .delete:hover {
   background-color: white;
   color: red;
 }
-
-.changeform {
-  background-color: lightblue;
-}
-.changeform input[type=text],
-.changeform input[type=email],
-.changeform input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-.changeform input[type=submit] {
-  background-color: royalblue;
-  border: 2px solid royalblue;
+body main table th,
+body main table td {
+  padding: 15px;
   color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  margin-left: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  transition-duration: 0.4s;
-  cursor: pointer;
 }
-.changeform input[type=submit]:hover {
-  background-color: lightblue;
-  color: royalblue;
-  border: 2px solid royalblue;
+body main table,
+body main td,
+body main th {
+  border: 1px solid #ddd;
+  text-align: left;
 }
-
-/* Modal um Bilder hochzuladen*/
-.addUsers {
+body .addUsers {
   display: none;
   position: fixed;
   z-index: 1;
@@ -130,7 +187,7 @@ td {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-.addUsers .modal-content {
+body .addUsers .modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -144,34 +201,34 @@ td {
   animation-duration: 0.4s;
   box-shadow: 0 0 30px #ccc;
 }
-.addUsers .modal-content .modal-header {
+body .addUsers .modal-content .modal-header {
   padding: 2px 16px;
   background-color: lightblue;
   color: white;
 }
-.addUsers .modal-content .modal-header .closeUser {
+body .addUsers .modal-content .modal-header .closeUser {
   color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-.addUsers .modal-content .modal-header .closeUser:hover, .addUsers .modal-content .modal-header .closeUser:focus {
+body .addUsers .modal-content .modal-header .closeUser:hover, body .addUsers .modal-content .modal-header .closeUser:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-.addUsers .modal-content .modal-body {
+body .addUsers .modal-content .modal-body {
   padding: 2px 16px;
 }
-.addUsers .modal-content .modal-body input[type=text],
-.addUsers .modal-content .modal-body input[type=email],
-.addUsers .modal-content .modal-body input[type=password] {
+body .addUsers .modal-content .modal-body input[type=text],
+body .addUsers .modal-content .modal-body input[type=email],
+body .addUsers .modal-content .modal-body input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
-.addUsers .modal-content .modal-body input[type=submit] {
+body .addUsers .modal-content .modal-body input[type=submit] {
   background-color: royalblue;
   border: 2px solid royalblue;
   color: white;
@@ -186,10 +243,91 @@ td {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-.addUsers .modal-content .modal-body input[type=submit]:hover {
+body .addUsers .modal-content .modal-body input[type=submit]:hover {
   background-color: lightblue;
   color: royalblue;
   border: 2px solid royalblue;
+}
+body .addImages {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+body .addImages .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 30px #ccc;
+}
+body .addImages .modal-content .modal-header {
+  padding: 2px 16px;
+  background-color: lightblue;
+  color: white;
+}
+body .addImages .modal-content .modal-header .closeImages {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+body .addImages .modal-content .modal-header .closeImages:hover, body .addImages .modal-content .modal-header .closeImages:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+body .addImages .modal-content .modal-body {
+  padding: 2px 16px;
+}
+body .addImages .modal-content .modal-body input[type=text],
+body .addImages .modal-content .modal-body input[type=email],
+body .addImages .modal-content .modal-body input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+body .addImages .modal-content .modal-body input[type=submit] {
+  background-color: royalblue;
+  border: 2px solid royalblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+body .addImages .modal-content .modal-body input[type=submit]:hover {
+  background-color: lightblue;
+  color: royalblue;
+  border: 2px solid royalblue;
+}
+body footer {
+  text-align: center;
+  background-color: lightblue;
+  margin-top: auto;
+  padding: 0;
+  margin: 0;
 }
 
 /* Add Animation */
