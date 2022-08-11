@@ -21,7 +21,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Allgemeines CSS -->
     <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/navbar.css">
+    <!-- Für nur diese Seite -->
+    <link rel="stylesheet" href="public/css/home.css">
+    <!-- Für Footer -->
+    <link rel="stylesheet" href="public/css/footer.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Fotostudio</title>
@@ -120,7 +126,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </main>
 
     <!-- Modal -->
-    <div id="myModal" class="addImage">
+    <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">

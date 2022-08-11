@@ -44,4 +44,12 @@ class Fotostudio
 		$statement->bindParam(':id', $id, PDO::PARAM_STR);
 		$statement->execute();
 	}
+
+	public function benutzer_hinzufuegen($benutzername, $email, $hashed_password){
+		$statement = $this->db->prepare("INSERT INTO `benutzer` (username, email, password, role) VALUES (:username, :email, :password, 2)");
+		$statement->bindParam(':username', $benutzername, PDO::PARAM_STR);
+		$statement->bindParam(':email', $email, PDO::PARAM_STR);
+		$statement->bindParam(':password', $hashed_password, PDO::PARAM_STR);
+		$statement->execute();
+	}
 }

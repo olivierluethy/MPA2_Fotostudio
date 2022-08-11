@@ -1,0 +1,183 @@
+/* Benutzerverwaltung */
+.header {
+  width: 99.9%;
+  border: none;
+  margin-left: -1.2rem;
+}
+.header button {
+  background-color: gold;
+  border: 2px solid gold;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  float: right;
+}
+.header button:hover {
+  background-color: black;
+  color: gold;
+  transition-duration: 0.4s;
+}
+.header td,
+.header th {
+  border: none;
+}
+
+/* Benutzerverwaltung */
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 98%;
+}
+
+th,
+td {
+  padding: 15px;
+  color: white;
+}
+
+/* Edit delete Button */
+.edit {
+  background-color: #4caf50;
+  border: 2px solid #4caf50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.edit:hover {
+  background-color: white;
+  color: #4caf50;
+  transition-duration: 0.4s;
+}
+
+.delete {
+  background-color: red;
+  border: 2px solid red;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.delete:hover {
+  background-color: white;
+  color: red;
+}
+
+/* Modal um Bilder hochzuladen*/
+.addUsers {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.addUsers .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 30px #ccc;
+}
+.addUsers .modal-content .modal-header {
+  padding: 2px 16px;
+  background-color: lightblue;
+  color: white;
+}
+.addUsers .modal-content .modal-header .closeUser {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.addUsers .modal-content .modal-header .closeUser:hover, .addUsers .modal-content .modal-header .closeUser:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.addUsers .modal-content .modal-body {
+  padding: 2px 16px;
+}
+.addUsers .modal-content .modal-body input[type=text],
+.addUsers .modal-content .modal-body input[type=email],
+.addUsers .modal-content .modal-body input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.addUsers .modal-content .modal-body input[type=submit] {
+  background-color: royalblue;
+  border: 2px solid royalblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-left: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.addUsers .modal-content .modal-body input[type=submit]:hover {
+  background-color: lightblue;
+  color: royalblue;
+  border: 2px solid royalblue;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}/*# sourceMappingURL=benutzerverwaltung.css.map */

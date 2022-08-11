@@ -6,6 +6,7 @@ $routes = [
 	'home' => 'FotostudioController@index',
 	'benutzerverwaltung' => 'FotostudioController@benutzerverwaltung',
 	'bild_hinzufuegen' => 'FotostudioController@bild_hinzufuegen',
+	'benutzer_hinzufuegen' => 'FotostudioController@benutzer_hinzufuegen',
 
 	'login' => 'LoginController@login',
 	'logout' => 'LoginController@logout',

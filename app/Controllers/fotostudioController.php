@@ -81,4 +81,24 @@ class FotostudioController
 			}
 		}
 	}
+
+	public function benutzer_hinzufuegen(){
+		// Initialize the session
+        session_start();
+
+		$Fotostudio = new Fotostudio();
+        $pdo = connectDatabase();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $benutzername = $_POST['benutzername'];
+            $email = $_POST['email'];
+
+			$hashed_password = password_hash($_POST['passwort'], PASSWORD_DEFAULT);
+
+            $Fotostudio->benutzer_hinzufuegen($benutzername, $email, $hashed_password);
+
+            header('Location: benutzerverwaltung');
+        }
+	}
 }

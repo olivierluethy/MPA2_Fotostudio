@@ -1,77 +1,75 @@
-@charset "UTF-8";
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #292b31;
-  /* Navigation Bar */
-  /* Modal um Bilder || Benutzer hinzuzufügen */
-  /* Modal Content */
+  /* Modal um Bilder hochzuladen*/
   /* Add Animation */
-  /* The Close Button */
-  /* Footer */
 }
-body nav {
-  display: flex;
-  width: 100%;
-  background-color: lightblue;
-  box-shadow: 2px 3px 5px grey;
-  position: -webkit-sticky;
-  position: sticky;
+body main {
+  margin-left: 2.8rem;
+  margin-top: 3rem;
+}
+body main .noData {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+}
+body .addImages {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
   top: 0;
-  z-index: 100;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
-body nav .part1 {
-  margin-left: 2rem;
-  display: flex;
+body .addImages .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
   width: 20%;
-  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 30px #ccc;
 }
-body nav .part1 img {
-  -o-object-fit: contain;
-     object-fit: contain;
-  width: 20%;
-  margin-top: auto;
-  margin-bottom: auto;
-  min-width: 80px;
-  transition: 500ms;
-}
-body nav .part1 img:hover {
-  transform: scale(1.1);
-  transition: 500ms;
-}
-body nav .part1 h1 {
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 1rem;
-  transition-duration: 0.4s;
-}
-body nav .part1 h1:hover {
-  text-shadow: 2px 2px lightgray;
-}
-body nav .part2 {
-  width: 80%;
-  margin-top: auto;
-  margin-bottom: auto;
-  text-align: right;
-  margin-right: 2rem;
-}
-body nav .part2 a {
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  margin-left: 2rem;
-  transition-duration: 0.4s;
-}
-body nav .part2 a:hover {
-  font-style: italic;
+body .addImages .modal-content .modal-header {
+  padding: 2px 16px;
+  background-color: lightblue;
   color: white;
 }
-body nav .part2 a.active {
-  color: yellow;
-  font-style: italic;
+body .addImages .modal-content .modal-header .closeImages {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
-body nav .part2 button {
+body .addImages .modal-content .modal-header .closeImages:hover, body .addImages .modal-content .modal-header .closeImages:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+body .addImages .modal-content .modal-body {
+  padding: 2px 16px;
+}
+body .addImages .modal-content .modal-body input[type=text],
+body .addImages .modal-content .modal-body input[type=email],
+body .addImages .modal-content .modal-body input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+body .addImages .modal-content .modal-body input[type=submit] {
   background-color: royalblue;
   border: 2px solid royalblue;
   color: white;
@@ -86,212 +84,10 @@ body nav .part2 button {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-body nav .part2 button:hover {
+body .addImages .modal-content .modal-body input[type=submit]:hover {
   background-color: lightblue;
   color: royalblue;
   border: 2px solid royalblue;
-}
-body nav .part2 button:nth-child(2) {
-  margin-right: 2.4rem;
-}
-body main {
-  margin-left: 2.8rem;
-  margin-top: 3rem;
-  /* Bildrahmen */
-  /* Benutzerverwaltung */
-  /* Edit delete Button */
-  /* Benutzerverwaltung */
-}
-body main .frame {
-  background-color: #ddc;
-  border: solid 5vmin #eee;
-  border-bottom-color: #fff;
-  border-left-color: #eee;
-  border-radius: 2px;
-  border-right-color: #eee;
-  border-top-color: #ddd;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25) inset, 0 5px 10px 5px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
-  display: inline-block;
-  height: 80vh;
-  padding: 8vmin;
-  position: relative;
-  text-align: center;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-body main .frame:before {
-  border-radius: 2px;
-  bottom: -2vmin;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25) inset;
-  content: "";
-  left: -2vmin;
-  position: absolute;
-  right: -2vmin;
-  top: -2vmin;
-}
-body main .frame:after {
-  border-radius: 2px;
-  bottom: -2.5vmin;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-  content: "";
-  left: -2.5vmin;
-  position: absolute;
-  right: -2.5vmin;
-  top: -2.5vmin;
-}
-body main .frame:hover img {
-  filter: blur(4px);
-  -webkit-filter: blur(4px);
-  transition-duration: 0.4s;
-}
-body main .frame:hover .infobox {
-  display: block;
-}
-body main .frame:hover .infobox table,
-body main .frame:hover .infobox td,
-body main .frame:hover .infobox tr {
-  border: none;
-}
-body main .frame img {
-  border: solid 2px;
-  border-bottom-color: #ffe;
-  border-left-color: #eed;
-  border-right-color: #eed;
-  border-top-color: #ccb;
-  max-height: 100%;
-  max-width: 100%;
-  transition-duration: 0.4s;
-}
-body main .frame .infobox {
-  background-color: gray;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  margin-top: -30rem;
-  border-radius: 25px;
-  width: 80%;
-  z-index: 99;
-  display: none;
-  opacity: 0.8;
-  cursor: context-menu;
-}
-body main .noData {
-  text-align: center;
-  color: white;
-  margin-bottom: 3rem;
-}
-body main table,
-body main td,
-body main th {
-  border: 1px solid #ddd;
-  text-align: left;
-}
-body main table {
-  border-collapse: collapse;
-  width: 98%;
-}
-body main th,
-body main td {
-  padding: 15px;
-  color: white;
-}
-body main .edit {
-  background-color: #4caf50;
-  border: 2px solid #4caf50;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  transition: 0.5s ease;
-}
-body main .edit:hover {
-  background-color: white;
-  color: #4caf50;
-  transition-duration: 0.4s;
-}
-body main .delete {
-  background-color: red;
-  border: 2px solid red;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.5s ease;
-}
-body main .delete:hover {
-  background-color: white;
-  color: red;
-}
-body main .header {
-  width: 99.9%;
-  border: none;
-  margin-left: -1.2rem;
-}
-body main .header button {
-  background-color: gold;
-  border: 2px solid gold;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  transition: 0.5s ease;
-  float: right;
-}
-body main .header button:hover {
-  background-color: black;
-  color: gold;
-  transition-duration: 0.4s;
-}
-body main .header td,
-body main .header th {
-  border: none;
-}
-body .addImage {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-body .modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 20%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  box-shadow: 0 0 30px #ccc;
-}
-body .modal-content input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
 }
 @-webkit-keyframes animatetop {
   from {
@@ -312,36 +108,4 @@ body .modal-content input[type=text] {
     top: 0;
     opacity: 1;
   }
-}
-body .close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-body .close:hover,
-body .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-body .modal-header {
-  padding: 2px 16px;
-  background-color: lightblue;
-  color: white;
-}
-body .modal-body {
-  padding: 2px 16px;
-}
-body .modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
-}
-body footer {
-  text-align: center;
-  background-color: lightblue;
-  margin-top: auto;
-  padding: 0;
-  margin: 0;
 }/*# sourceMappingURL=main.css.map */

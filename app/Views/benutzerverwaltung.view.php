@@ -17,7 +17,13 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Allgemeines CSS -->
     <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/navbar.css">
+    <!-- Für nur diese Seite -->
+    <link rel="stylesheet" href="public/css/benutzerverwaltung.css">
+    <!-- Für Footer -->
+    <link rel="stylesheet" href="public/css/footer.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Benutzerverwaltung</title>
@@ -56,7 +62,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
             <table class='header'>
                 <tr style='border:none;'>
                     <th><h1 style='color: white;'>Benutzerverwaltung</h1></th>
-                    <th><button>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
+                    <th><button onclick='addUser()'>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
                 </tr>
             </table>
             <div style='overflow-x: auto;'>
@@ -99,25 +105,49 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
         ?>
     </main>
 
-    <!-- Modal -->
-    <div id="myModal" class="addImage">
+    <!-- Modal um Benutzer hinzuzufügen -->
+    <div id="addUser" class="addUsers">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="closeUser">&times;</span>
+                <h2>Benutzer hinzufügen</h2>
+            </div><br>
+            <div class="modal-body">
+                <form id="formAddUser" action="benutzer_hinzufuegen" method="POST" enctype="multipart/form-data">
+                    <label for="benutzername">Benutzername:</label><br>
+                    <input type="text" id="benutzername" name="benutzername"><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="passwort">Passwort:</label><br>
+                    <input type="password" id="passwort" name="passwort"><br><br>
+                    <label for="passwort_bestaetigen">Passwort bestätigen:</label><br>
+                    <input type="password" id="passwort_bestaetigen" name="passwort_bestaetigen"><br><br>
+                    <input type="submit" value="Benutzer hinzufügen">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal um Bilder hochladen zu können -->
+    <div id="addImages" class="addImages">
 
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
+                <span class="closeImages">&times;</span>
                 <h2>Bild hochladen</h2>
             </div><br>
             <div class="modal-body">
-                <form action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
-                    <label for="fname">Titel:</label><br>
-                    <input type="text" id="fname" name="titel"><br><br>
+                <form id="formAddImage" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
+                    <label for="titel">Titel:</label><br>
+                    <input type="text" id="titel" name="titel"><br><br>
                     <label for="lname">Beschreibung:</label><br>
-                    <textarea name="beschreibung" id="" cols="30" rows="10"></textarea><br><br>
-                    <label for="lname">Datum:</label><br>
-                    <input type="date" id="lname" name="datum"><br><br>
-                    <label for="lname">Ort:</label><br>
-                    <input type="text" id="lname" name="ort"><br><br>
+                    <textarea name="beschreibung" id="beschreibung" cols="30" rows="10"></textarea><br><br>
+                    <label for="datum">Datum:</label><br>
+                    <input type="date" id="datum" name="datum"><br><br>
+                    <label for="ort">Ort:</label><br>
+                    <input type="text" id="ort" name="ort"><br><br>
                     <label for="lname">Öffentlich:</label><br>
                     <input type="checkbox" id="lname" value="Yes" name="oeffentlich"><br><br>
                     <label for="file">Bild auswählen:</label><br>
@@ -136,6 +166,8 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     </footer>
 
     <script src="public/js/main.js"></script>
+    <script src="public/js/validationAddUser.js"></script>
+    <script src="public/js/validationAddImage.js"></script>
 </body>
 
 </html>
