@@ -30,6 +30,8 @@ https://stackoverflow.com/questions/6821295/add-css-box-shadow-around-the-whole-
 Um das eingegebene Passwort zu prüfen nach dem in der Datenbank:
 https://stackoverflow.com/questions/30279321/how-to-use-phps-password-hash-to-hash-and-verify-passwords
 
+Formular für Benutzer bearbeitung:
+https://codepen.io/aklima/pen/bxqXLO
 
 ## Lösungen zu Problemen
 Bilder die hochgeladen wurden auch anzeigen:
