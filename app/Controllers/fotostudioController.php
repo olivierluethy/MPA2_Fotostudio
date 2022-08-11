@@ -35,7 +35,7 @@ class FotostudioController
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		if($_SESSION['role'] == 1){
-			$benutzer = $Fotostudio -> getBenutzer();
+			$benutzer = $Fotostudio -> getOwner();
         	$benutzer = $benutzer -> fetchAll();
 
 			require 'app/Views/benutzerverwaltung.view.php';
@@ -114,5 +114,38 @@ class FotostudioController
 
 		$Fotostudio->deleteBenutzer($id);
         
-        header('Location: benutzerverwaltung');	}
+        header('Location: benutzerverwaltung');	
+	}
+
+	public function editBenutzer(){
+		// Initialize the session
+        session_start();
+
+		$id = $_GET['id'];
+
+		$Fotostudio = new Fotostudio();
+        $pdo = connectDatabase();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $benutzername = $_POST['benutzername'];
+            $email = $_POST['email'];
+			$passwort = $_POST['passwort'];
+
+			$getBenutzer = $Fotostudio -> getBenutzer($id);
+        	$getBenutzer = $getBenutzer -> fetchAll();
+            
+			if(password_verify($passwort, $getBenutzer[0][3])) {
+				$Fotostudio->editBenutzer($benutzername, $email, $id);
+
+            	header('Location: benutzerverwaltung');	
+			}else{
+				echo "<script>alert('Falsches Passwort!')</script>";
+			}
+        }else{
+			$getBenutzer = $Fotostudio -> getBenutzer($id);
+        	$getBenutzer = $getBenutzer -> fetchAll();
+        }
+		require 'app/Views/editBenutzer.view.php';
+	}
 }

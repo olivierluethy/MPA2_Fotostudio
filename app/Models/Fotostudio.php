@@ -11,7 +11,7 @@ class Fotostudio
 	/* Öffentliche Bilder anzeigen - wenn nicht eingeloggt */
     public function picturesOpen(){
         $statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, benutzer.username FROM images
-		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId WHERE oeffentlich = 0');
+		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId WHERE oeffentlich = 1');
 		$statement->execute();
         return $statement;
     }
@@ -25,7 +25,7 @@ class Fotostudio
 	}
 
 	/* Alle Benutzer anzeigen - nur mit "Owner" Rolle möglich */
-	public function getBenutzer(){
+	public function getOwner(){
 		$statement = $this->db->prepare('SELECT benutzerId, username, email, role FROM benutzer');
 		$statement->execute();
         return $statement;
@@ -55,7 +55,25 @@ class Fotostudio
 
 	public function deleteBenutzer($id){
 		$statement = $this->db->prepare('DELETE FROM `benutzer` WHERE benutzerId = :id');
-        $statement->bindParam(':id', $id);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
         $statement->execute();
+	}
+
+	public function getBenutzer($id){
+		$statement = $this->db->prepare('SELECT * FROM `benutzer` WHERE benutzerId = :id');
+		$statement->bindParam(':id', $id, PDO::PARAM_STR);
+		$statement->execute();
+		return $statement;
+	}
+
+	public function editBenutzer($benutzername, $email, $id){
+		$benutzername = htmlspecialchars($_POST['benutzername']);
+		$email = htmlspecialchars($_POST['email']);
+
+		$statement = $this->db->prepare('UPDATE benutzer SET username = :username, email = :email WHERE benutzerId = :id');
+		$statement->bindParam(':username', $benutzername);
+		$statement->bindParam(':email', $email);
+		$statement->bindParam(':id', $id);
+		$statement->execute();
 	}
 }

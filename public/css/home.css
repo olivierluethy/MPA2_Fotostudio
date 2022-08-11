@@ -46,6 +46,7 @@
 }
 .frame:hover .infobox {
   display: block;
+  overflow-x: auto;
 }
 .frame:hover .infobox table,
 .frame:hover .infobox td,

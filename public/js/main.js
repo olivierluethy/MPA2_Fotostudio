@@ -25,6 +25,10 @@ function deleteBenutzer(id) {
     location.href = "deleteBenutzer?id=" + id;
 }
 
+function editBenutzer(id) {
+    location.href = "editBenutzer?id=" + id;
+}
+
 // Get the modal
 var addImages = document.getElementById("addImages");
 

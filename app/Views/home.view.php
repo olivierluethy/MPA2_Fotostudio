@@ -62,6 +62,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <main>
         <!-- Bilder -->
         <?php
+        /* Falls man nicht eingeloggt ist, werden nur öffentliche Bilder angezeigt */
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             if($picOpenCounter > 0){
                 echo "<h1 style='color: white; margin-bottom: 1rem;'>Öffentliche Bilder</h1>";
@@ -98,23 +99,37 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             }else {
                 echo "<h1 class='noData'>Keine öffentlichen Bilder vorhanden</h1>";
             }
-        }else if (isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
+        }
+        /* Falls man eingeloggt ist, werden alle Bilder angezeigt */
+        else if (isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
             if($picAllCounter > 0){
                 foreach ($picAll as $picAll2){
                     echo "
                     <div class='frame'>
-                        <img src='data:" . $picAll2['imageType'] . ";base64, ". base64_encode($picAll2['imageData']) . "'/>
+                        <img src='data:" . $picAll2['imageType'] . ";base64, ".base64_encode($picAll2['imageData']). "'/>
                         <div class='infobox'>
-                            <p>Titel:</p>
-                            <p>" . $picAll2['titel'] . "</p>
-                            <p>Beschreibung:</p>
-                            <p>" . $picAll2['beschreibung'] . "</p>
-                            <p>Datum:</p>
-                            <p>" . $picAll2['datum'] . "</p>
-                            <p>Ort:</p>
-                            <p>" . $picAll2['ort'] . "</p>
-                            <p>Veröffentlicht von:</p>
-                            <p>" . $picAll2['username'] . "</p>
+                            <table style='width:100%'>
+                                <tr>
+                                    <td><h3>Titel:</h3></td>
+                                    <td><h3>" . $picAll2['titel'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Beschreibung:</h3></td>
+                                    <td><h3>" . $picAll2['beschreibung'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                <td><h3>Datum:</h3></td>
+                                <td><h3>" . $picAll2['datum'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                <td><h3>Ort:</h3></td>
+                                <td><h3>" . $picAll2['ort'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                <td><h3>Veröffentlicht von:</h3></td>
+                                <td><h3>" . $picAll2['username'] . "</h3></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>";
                 }
@@ -126,12 +141,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </main>
 
     <!-- Modal -->
-    <div id="myModal" class="modal">
+    <div id="addImages" class="addImages">
 
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
+                <span class="closeImages">&times;</span>
                 <h2>Bild hochladen</h2>
             </div><br>
             <div class="modal-body">
