@@ -36,6 +36,9 @@ https://codepen.io/aklima/pen/bxqXLO
 Kann man Margin-min oder max machen:
 https://stackoverflow.com/questions/38078957/can-we-define-min-margin-and-max-margin-max-padding-and-min-padding-in-css
 
+Um ein Wert in das Download Feld reinzutun - Kann man nicht aus Sicherheitsgründen:
+https://stackoverflow.com/questions/1696877/how-to-set-a-value-to-a-file-input-in-html
+
 ## Lösungen zu Problemen
 Bilder die hochgeladen wurden auch anzeigen:
 - Die Funktion "Bind Param" braucht kein SQL Injection und daher auch kein Backslash. Wird vom System nicht entfernt, sondern bleibt bestehen!

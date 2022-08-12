@@ -160,26 +160,35 @@ class FotostudioController
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$titel = $_POST['titel'];
-			$beschreibung = $_POST['beschreibung'];
-			$datum = $_POST['datum'];
-			$ort = $_POST['ort'];
-			$oeffentlich = $_POST['oeffentlich'];
+			/* For Image Upload */
+            if(count($_FILES) > 0) {
+                if(is_uploaded_file($_FILES['filename']['tmp_name'])) {
+                    $imgData = file_get_contents($_FILES['filename']['tmp_name']);
+                    $imageProperties = getimageSize($_FILES['filename']['tmp_name']);
 
-			if ($oeffentlich == 'Yes') {
-				$oeffentlich = 1;
-			}else {
-				$oeffentlich = 0;
+					$titel = $_POST['titel'];
+					$beschreibung = $_POST['beschreibung'];
+					$datum = $_POST['datum'];
+					$ort = $_POST['ort'];
+					$oeffentlich = $_POST['oeffentlich'];
+
+					if ($oeffentlich == 'Yes') {
+						$oeffentlich = 1;
+					}else {
+						$oeffentlich = 0;
+					}
+            
+					$Fotostudio->editBild($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties['mime'], $imgData, $id);
+
+            		header('Location: home');
+				}
 			}
-	
-			$Fotostudio->editBild($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id);
-
-			header('Location: home');
         }else{
 			$getImage = $Fotostudio -> getImage($id);
         	$getImage = $getImage -> fetchAll();
+
+			require 'app/Views/editBild.view.php';
         }
-		require 'app/Views/editBild.view.php';
 	}
 
 	public function deleteBild(){
