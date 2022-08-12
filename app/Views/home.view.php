@@ -147,16 +147,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div><br>
             <div class="modal-body">
                 <form action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
-                    <label for="fname">Titel:</label><br>
-                    <input type="text" id="fname" name="titel"><br><br>
-                    <label for="lname">Beschreibung:</label><br>
-                    <textarea name="beschreibung" id="" cols="30" rows="10"></textarea><br><br>
-                    <label for="lname">Datum:</label><br>
-                    <input type="date" id="lname" name="datum"><br><br>
-                    <label for="lname">Ort:</label><br>
-                    <input type="text" id="lname" name="ort"><br><br>
-                    <label for="lname">Öffentlich:</label><br>
-                    <input type="checkbox" id="lname" value="Yes" name="oeffentlich"><br><br>
+                    <label for="titel">Titel:</label><br>
+                    <input type="text" id="titel" name="titel"><br><br>
+                    <label for="beschreibung">Beschreibung:</label><br>
+                    <textarea name="beschreibung" id="beschreibung" cols="30" rows="10"></textarea><br><br>
+                    <label for="datum">Datum:</label><br>
+                    <input type="date" id="datum" name="datum"><br><br>
+                    <label for="ort">Ort:</label><br>
+                    <input type="text" id="ort" name="ort"><br><br>
+                    <label for="oeffentlich">Öffentlich:</label><br>
+                    <input type="checkbox" id="oeffentlich" value="Yes" name="oeffentlich"><br><br>
                     <label for="file">Bild auswählen:</label><br>
                     <input type="file" id="myFile" name="filename"><br><br>
                     <input type="submit" value="Bild hochladen">
@@ -171,6 +171,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </footer>
 
     <script src="public/js/main.js"></script>
+    <script src="public/js/validationAddImage.js"></script>
 </body>
 
 </html>

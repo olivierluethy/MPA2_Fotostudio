@@ -39,4 +39,6 @@ INSERT INTO `benutzer` (`benutzerId`, `username`, `email`, `password`, `role`, `
 /* VIP */
 (2, 'TestFaktor', 'test@test.ch', '$2y$10$H6NDgXrwP82NF99WPDDwJeMy1FZTnsIVYcMc.dCKSSTFoILukq.Am', 2, '2022-08-05 13:55:59'),
 /* Normaler Benutzer */
-(3, 'Unendlich', 'spas@spas.ch', '$2y$10$H6NDgXrwP82NF99WPDDwJeMy1FZTnsIVYcMc.dCKSSTFoILukq.Am', '', '2022-08-05 13:55:59');
+(3, 'Unendlich', 'spas@spas.ch', '$2y$10$H6NDgXrwP82NF99WPDDwJeMy1FZTnsIVYcMc.dCKSSTFoILukq.Am', '', '2022-08-05 13:55:59'),
+/* Für zum Testen */
+(4, 'Kauz Admin', 'kauz@kauz.ch', '$2y$10$obgm5U7eZWbqYcDoC4YcB.EMC1yAuhj8d0jx1MEK/IURpIrIbzED.', 1, '2022-08-05 13:55:59');

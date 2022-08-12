@@ -33,28 +33,21 @@ class Fotostudio
 
 	/* Bild hochladen - wenn man eingeloggt ist */
 	public function bild_hinzufuegen($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id){
-		$isValid = true;
 		$titel = htmlspecialchars($_POST['titel']);
 		$beschreibung = htmlspecialchars($_POST['beschreibung']);
 		$datum = htmlspecialchars($_POST['datum']);
 		$ort = htmlspecialchars($_POST['ort']);
 
-		if (strpos($email, "@") === false) {
-            $isValid = false;
-        }
-
-		if($isValid){
-			$statement = $this->db->prepare("INSERT INTO `images` (titel, beschreibung, datum, ort, oeffentlich, imageType, imageData, fk_benutzerId) VALUES (:titel, :beschreibung, :datum, :ort, :oeffentlich, :imageType, :imageData, :id)");
-			$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
-			$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
-			$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
-			$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
-			$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
-			$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
-			$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
-			$statement->bindParam(':id', $id, PDO::PARAM_STR);
-			$statement->execute();
-		}
+		$statement = $this->db->prepare("INSERT INTO `images` (titel, beschreibung, datum, ort, oeffentlich, imageType, imageData, fk_benutzerId) VALUES (:titel, :beschreibung, :datum, :ort, :oeffentlich, :imageType, :imageData, :id)");
+		$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
+		$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
+		$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
+		$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
+		$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
+		$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
+		$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
+		$statement->bindParam(':id', $id, PDO::PARAM_STR);
+		$statement->execute();
 	}
 
 	public function benutzer_hinzufuegen($benutzername, $email, $hashed_password){
@@ -108,24 +101,21 @@ class Fotostudio
 	}
 
 	public function editBild($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id){
-		$isValid = true;
 		$titel = htmlspecialchars($_POST['titel']);
 		$beschreibung = htmlspecialchars($_POST['beschreibung']);
 		$datum = htmlspecialchars($_POST['datum']);
 		$ort = htmlspecialchars($_POST['ort']);
 
-		if($isValid){
-			$statement = $this->db->prepare('UPDATE images SET titel = :titel, beschreibung = :beschreibung, datum = :datum, ort = :ort, oeffentlich = :oeffentlich, imageType = :imageType, imageData = :imageData WHERE imageId = :id');
-			$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
-			$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
-			$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
-			$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
-			$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
-			$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
-			$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
-			$statement->bindParam(':id', $id, PDO::PARAM_STR);
-			$statement->execute();
-		}
+		$statement = $this->db->prepare('UPDATE images SET titel = :titel, beschreibung = :beschreibung, datum = :datum, ort = :ort, oeffentlich = :oeffentlich, imageType = :imageType, imageData = :imageData WHERE imageId = :id');
+		$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
+		$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
+		$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
+		$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
+		$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
+		$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
+		$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
+		$statement->bindParam(':id', $id, PDO::PARAM_STR);
+		$statement->execute();
 	}
 
 	public function getImage($id){
