@@ -33,6 +33,9 @@ https://stackoverflow.com/questions/30279321/how-to-use-phps-password-hash-to-ha
 Formular für Benutzer bearbeitung:
 https://codepen.io/aklima/pen/bxqXLO
 
+Kann man Margin-min oder max machen:
+https://stackoverflow.com/questions/38078957/can-we-define-min-margin-and-max-margin-max-padding-and-min-padding-in-css
+
 ## Lösungen zu Problemen
 Bilder die hochgeladen wurden auch anzeigen:
 - Die Funktion "Bind Param" braucht kein SQL Injection und daher auch kein Backslash. Wird vom System nicht entfernt, sondern bleibt bestehen!

@@ -75,23 +75,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <td><h3>" . $picOpen2['beschreibung'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                <td><h3>Datum:</h3></td>
-                                <td><h3>" . $picOpen2['datum'] . "</h3></td>
+                                    <td><h3>Datum:</h3></td>
+                                    <td><h3>" . $picOpen2['datum'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                <td><h3>Ort:</h3></td>
-                                <td><h3>" . $picOpen2['ort'] . "</h3></td>
+                                    <td><h3>Ort:</h3></td>
+                                    <td><h3>" . $picOpen2['ort'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                <td><h3>Veröffentlicht von:</h3></td>
-                                <td><h3>" . $picOpen2['username'] . "</h3></td>
+                                    <td><h3>Veröffentlicht von:</h3></td>
+                                    <td><h3>" . $picOpen2['username'] . "</h3></td>
                                 </tr>
                             </table>
                         </div>
                     </div>";
                 }
             }else {
-                echo "<h1 class='noData'>Keine öffentlichen Bilder vorhanden</h1>";
+                echo "<h1 class='noData'>Keine öffentliche Bilder vorhanden</h1>";
             }
         }
         /* Falls man eingeloggt ist, werden alle Bilder angezeigt */
@@ -112,16 +112,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <td><h3>" . $picAll2['beschreibung'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                <td><h3>Datum:</h3></td>
-                                <td><h3>" . $picAll2['datum'] . "</h3></td>
+                                    <td><h3>Datum:</h3></td>
+                                    <td><h3>" . $picAll2['datum'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                <td><h3>Ort:</h3></td>
-                                <td><h3>" . $picAll2['ort'] . "</h3></td>
+                                    <td><h3>Ort:</h3></td>
+                                    <td><h3>" . $picAll2['ort'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                <td><h3>Veröffentlicht von:</h3></td>
-                                <td><h3>" . $picAll2['username'] . "</h3></td>
+                                    <td><h3>Veröffentlicht von:</h3></td>
+                                    <td><h3>" . $picAll2['username'] . "</h3></td>
+                                </tr>
+                                <tr>
+                                    <td><button onclick='editBild(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
+                                    <td><button onclick='deleteBild(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
                                 </tr>
                             </table>
                         </div>

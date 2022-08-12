@@ -148,4 +148,52 @@ class FotostudioController
         }
 		require 'app/Views/editBenutzer.view.php';
 	}
+
+	public function editBild(){
+		// Initialize the session
+        session_start();
+
+		$id = $_GET['id'];
+
+		$Fotostudio = new Fotostudio();
+        $pdo = connectDatabase();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$titel = $_POST['titel'];
+			$beschreibung = $_POST['beschreibung'];
+			$datum = $_POST['datum'];
+			$ort = $_POST['ort'];
+			$oeffentlich = $_POST['oeffentlich'];
+
+			if ($oeffentlich == 'Yes') {
+				$oeffentlich = 1;
+			}else {
+				$oeffentlich = 0;
+			}
+	
+			$Fotostudio->editBild($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id);
+
+			header('Location: home');
+        }else{
+			$getImage = $Fotostudio -> getImage($id);
+        	$getImage = $getImage -> fetchAll();
+        }
+		require 'app/Views/editBild.view.php';
+	}
+
+	public function deleteBild(){
+		// Initialize the session
+        session_start();
+
+		$Fotostudio = new Fotostudio();
+        $pdo = connectDatabase();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$id = $_GET['id'];
+
+		$Fotostudio->deleteBild($id);
+        
+        header('Location: home');	
+	}
 }

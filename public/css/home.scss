@@ -149,6 +149,50 @@ body {
                     tr {
                         border: none;
                     }
+                    tr {
+                        td {
+                            .delete {
+                                background-color: red;
+                                border: 2px solid red;
+                                color: white;
+                                padding: 16px 32px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                width: 80%;
+                                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                                transition-duration: 0.4s;
+                                cursor: pointer;
+                                &:hover {
+                                    background-color: #ddc;
+                                    color: red;
+                                    border: 2px solid red;
+                                }
+                            }
+                            .edit {
+                                background-color: green;
+                                border: 2px solid green;
+                                color: white;
+                                padding: 16px 32px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                width: 80%;
+                                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                                transition-duration: 0.4s;
+                                cursor: pointer;
+                                &:hover {
+                                    background-color: #ddc;
+                                    color: green;
+                                    border: 2px solid green;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             img {
@@ -175,11 +219,11 @@ body {
                 opacity: .8;
                 cursor: context-menu;
             }
-            .noData {
-                text-align: center;
-                color: white;
-                margin-bottom: 3rem;
-            }
+        }
+        .noData {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
         }
     }
     /* Modal um Bilder hochzuladen*/

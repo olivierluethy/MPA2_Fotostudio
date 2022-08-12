@@ -11,6 +11,9 @@ $routes = [
 	'deleteBenutzer' => 'FotostudioController@deleteBenutzer',
 	'editBenutzer' => 'FotostudioController@editBenutzer',
 
+	'deleteBild' => 'FotostudioController@deleteBild',
+	'editBild' => 'FotostudioController@editBild',
+
 	'login' => 'LoginController@login',
 	'logout' => 'LoginController@logout',
 ];
