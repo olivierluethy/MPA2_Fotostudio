@@ -33,24 +33,47 @@ class Fotostudio
 
 	/* Bild hochladen - wenn man eingeloggt ist */
 	public function bild_hinzufuegen($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id){
-		$statement = $this->db->prepare("INSERT INTO `images` (titel, beschreibung, datum, ort, oeffentlich, imageType, imageData, fk_benutzerId) VALUES (:titel, :beschreibung, :datum, :ort, :oeffentlich, :imageType, :imageData, :id)");
-		$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
-		$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
-		$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
-		$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
-		$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
-		$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
-		$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
-		$statement->bindParam(':id', $id, PDO::PARAM_STR);
-		$statement->execute();
+		$isValid = true;
+		$titel = htmlspecialchars($_POST['titel']);
+		$beschreibung = htmlspecialchars($_POST['beschreibung']);
+		$datum = htmlspecialchars($_POST['datum']);
+		$ort = htmlspecialchars($_POST['ort']);
+
+		if (strpos($email, "@") === false) {
+            $isValid = false;
+        }
+
+		if($isValid){
+			$statement = $this->db->prepare("INSERT INTO `images` (titel, beschreibung, datum, ort, oeffentlich, imageType, imageData, fk_benutzerId) VALUES (:titel, :beschreibung, :datum, :ort, :oeffentlich, :imageType, :imageData, :id)");
+			$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
+			$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
+			$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
+			$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
+			$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
+			$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
+			$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
+			$statement->bindParam(':id', $id, PDO::PARAM_STR);
+			$statement->execute();
+		}
 	}
 
 	public function benutzer_hinzufuegen($benutzername, $email, $hashed_password){
-		$statement = $this->db->prepare("INSERT INTO `benutzer` (username, email, password, role) VALUES (:username, :email, :password, 2)");
-		$statement->bindParam(':username', $benutzername, PDO::PARAM_STR);
-		$statement->bindParam(':email', $email, PDO::PARAM_STR);
-		$statement->bindParam(':password', $hashed_password, PDO::PARAM_STR);
-		$statement->execute();
+		$isValid = true;
+		$beschreibung = htmlspecialchars($_POST['beschreibung']);
+		$email = htmlspecialchars($_POST['email']);
+		$datum = htmlspecialchars($_POST['datum']);
+
+		if (strpos($email, "@") === false) {
+            $isValid = false;
+        }
+
+		if($isValid){
+			$statement = $this->db->prepare("INSERT INTO `benutzer` (username, email, password, role) VALUES (:username, :email, :password, 2)");
+			$statement->bindParam(':username', $benutzername, PDO::PARAM_STR);
+			$statement->bindParam(':email', $email, PDO::PARAM_STR);
+			$statement->bindParam(':password', $hashed_password, PDO::PARAM_STR);
+			$statement->execute();
+		}
 	}
 
 	public function deleteBenutzer($id){
@@ -67,27 +90,42 @@ class Fotostudio
 	}
 
 	public function editBenutzer($benutzername, $email, $id){
+		$isValid = true;
 		$benutzername = htmlspecialchars($_POST['benutzername']);
 		$email = htmlspecialchars($_POST['email']);
 
-		$statement = $this->db->prepare('UPDATE benutzer SET username = :username, email = :email WHERE benutzerId = :id');
-		$statement->bindParam(':username', $benutzername);
-		$statement->bindParam(':email', $email);
-		$statement->bindParam(':id', $id);
-		$statement->execute();
+		if (strpos($email, "@") === false) {
+            $isValid = false;
+        }
+
+		if($isValid){
+			$statement = $this->db->prepare('UPDATE benutzer SET username = :username, email = :email WHERE benutzerId = :id');
+			$statement->bindParam(':username', $benutzername);
+			$statement->bindParam(':email', $email);
+			$statement->bindParam(':id', $id);
+			$statement->execute();
+		}
 	}
 
 	public function editBild($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id){
-		$statement = $this->db->prepare('UPDATE images SET titel = :titel, beschreibung = :beschreibung, datum = :datum, ort = :ort, oeffentlich = :oeffentlich, imageType = :imageType, imageData = :imageData WHERE imageId = :id');
-		$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
-		$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
-		$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
-		$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
-		$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
-		$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
-		$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
-		$statement->bindParam(':id', $id, PDO::PARAM_STR);
-		$statement->execute();
+		$isValid = true;
+		$titel = htmlspecialchars($_POST['titel']);
+		$beschreibung = htmlspecialchars($_POST['beschreibung']);
+		$datum = htmlspecialchars($_POST['datum']);
+		$ort = htmlspecialchars($_POST['ort']);
+
+		if($isValid){
+			$statement = $this->db->prepare('UPDATE images SET titel = :titel, beschreibung = :beschreibung, datum = :datum, ort = :ort, oeffentlich = :oeffentlich, imageType = :imageType, imageData = :imageData WHERE imageId = :id');
+			$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
+			$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
+			$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
+			$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
+			$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_STR);
+			$statement->bindParam(':imageType', $imageProperties, PDO::PARAM_STR);
+			$statement->bindParam(':imageData', $imgData, PDO::PARAM_LOB);
+			$statement->bindParam(':id', $id, PDO::PARAM_STR);
+			$statement->execute();
+		}
 	}
 
 	public function getImage($id){

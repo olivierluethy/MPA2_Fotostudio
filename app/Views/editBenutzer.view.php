@@ -43,7 +43,7 @@
         <input type="text" id="benutzername" name="benutzername" value="<?= $getBenutzer[0][1] ?>" placeholder="Benutzernamen eingeben"><br>
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" value="<?= $getBenutzer[0][2] ?>" placeholder="Email Adresse eingeben"><br>
-        <label for="passwort">Passwort:</label><br>
+        <label for="passwort">Passwort des Benutzers:</label><br>
         <input type="password" id="passwort" name="passwort" placeholder="Passwort eingeben"><br>
         <input type="submit" value="Benutzer ändern"><br>
     </form>
