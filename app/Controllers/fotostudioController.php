@@ -30,6 +30,10 @@ class FotostudioController
 		// Initialize the session
         session_start();
 
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
+
 		$Fotostudio = new Fotostudio();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -51,6 +55,10 @@ class FotostudioController
 	public function bild_hinzufuegen(){
 		// Initialize the session
         session_start();
+
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
 
 		$Fotostudio = new Fotostudio();
         $pdo = connectDatabase();
@@ -86,6 +94,10 @@ class FotostudioController
 		// Initialize the session
         session_start();
 
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
+
 		$Fotostudio = new Fotostudio();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -106,6 +118,10 @@ class FotostudioController
 		// Initialize the session
         session_start();
 
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
+
 		$Fotostudio = new Fotostudio();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -114,12 +130,16 @@ class FotostudioController
 
 		$Fotostudio->deleteBenutzer($id);
         
-        header('Location: benutzerverwaltung');	
+        header('Location: benutzerverwaltung');
 	}
 
 	public function editBenutzer(){
 		// Initialize the session
         session_start();
+
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
 
 		$id = $_GET['id'];
 
@@ -152,6 +172,10 @@ class FotostudioController
 	public function editBild(){
 		// Initialize the session
         session_start();
+
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
 
 		$id = $_GET['id'];
 
@@ -194,6 +218,10 @@ class FotostudioController
 	public function deleteBild(){
 		// Initialize the session
         session_start();
+
+		if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+			header('Location: login');
+		}
 
 		$Fotostudio = new Fotostudio();
         $pdo = connectDatabase();

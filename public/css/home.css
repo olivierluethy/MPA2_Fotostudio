@@ -1,3 +1,34 @@
+@media screen and (max-width: 968px) {
+  body nav .part1 h1 {
+    font-size: 1rem;
+  }
+  body nav .part1 img {
+    width: 80px;
+  }
+  body nav .part2 a {
+    font-size: 0.9rem;
+  }
+  body nav .part2 .uploadBtn,
+body nav .part2 .loginBtn,
+body nav .part2 .logoutBtn {
+    padding: 5px 21px;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 841px) {
+  body nav .part1 h1 {
+    font-size: 0.6rem;
+  }
+  body nav .part2 a {
+    font-size: 0.7rem;
+  }
+  body nav .part2 .uploadBtn,
+body nav .part2 .loginBtn,
+body nav .part2 .logoutBtn {
+    padding: 0px 0px;
+    font-size: 10px;
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -29,7 +60,7 @@ body nav .part1 img {
   width: 20%;
   margin-top: auto;
   margin-bottom: auto;
-  min-width: 80px;
+  min-width: 40px;
   transition: 500ms;
 }
 body nav .part1 img:hover {

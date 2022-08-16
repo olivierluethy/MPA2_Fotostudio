@@ -1,3 +1,52 @@
+@media screen and (max-width: 968px) {
+    body {
+        nav {
+            .part1 {
+                h1 {
+                    font-size: 1rem;
+                }
+                img {
+                    width: 80px;
+                }
+            }
+            .part2 {
+                a {
+                    font-size: 0.9rem;
+                }
+                .uploadBtn,
+                .loginBtn,
+                .logoutBtn {
+                    padding: 5px 21px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 841px) {
+    body {
+        nav {
+            .part1 {
+                h1 {
+                    font-size: 0.6rem;
+                }
+            }
+            .part2 {
+                a {
+                    font-size: 0.7rem;
+                }
+                .uploadBtn,
+                .loginBtn,
+                .logoutBtn {
+                    padding: 0px 0px;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -23,7 +72,7 @@ body {
                 width: 20%;
                 margin-top: auto;
                 margin-bottom: auto;
-                min-width: 80px;
+                min-width: 40px;
                 transition: 500ms;
                 &:hover {
                     transform: scale(1.1);
@@ -102,7 +151,8 @@ body {
         }
         input[type=text],
         input[type=email],
-        input[type=password] {
+        input[type=password],
+        input[type=date] {
             width: 100%;
             height: 28px;
             margin-bottom: 15px;
