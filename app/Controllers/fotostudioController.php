@@ -130,7 +130,7 @@ class FotostudioController
 
 		$Fotostudio->deleteBenutzer($id);
         
-        header('Location: benutzerverwaltung');
+        header('Location: benutzerverwaltung');	
 	}
 
 	public function editBenutzer(){

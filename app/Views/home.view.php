@@ -22,6 +22,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/home.css">
+    <link rel="stylesheet" href="public/css/responsiveNav.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Fotostudio</title>
@@ -146,7 +147,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <h2>Bild hochladen</h2>
             </div><br>
             <div class="modal-body">
-                <form action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
+                <form id="formAddImage" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
                     <label for="titel">Titel:</label><br>
                     <input type="text" id="titel" name="titel"><br><br>
                     <label for="beschreibung">Beschreibung:</label><br>
@@ -164,11 +165,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer>
-        <h1>Fotostudio</h1>
-        <p id="year"></p>
-    </footer>
+
+    <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
     <script src="public/js/validationAddImage.js"></script>

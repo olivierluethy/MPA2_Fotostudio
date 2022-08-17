@@ -18,6 +18,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/benutzerverwaltung.css">
+    <link rel="stylesheet" href="public/css/responsiveNav.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Benutzerverwaltung</title>
@@ -60,42 +61,42 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                         <th><button onclick='addUser()'>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
                     </tr>
                 </table>
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Benutzername</th>
-                            <th>Email</th>
-                            <th>Rolle</th>
-                            <th>Bearbeiten</th>
-                            <th>Löschen</th>
-                        </tr>";
-                        foreach ($benutzer as $benutzer2){
-                            echo "<tr>";
-                            if($benutzer2['role'] == 1){
-                                echo "
-                                <td style='background-color: green;'>" . $benutzer2['benutzerId'] . "</td>
-                                <td style='background-color: green;'>" . $benutzer2['username'] . "</td>
-                                <td style='background-color: green;'>" . $benutzer2['email'] . "</td>
-                                <td style='background-color: green;'>Owner</td>
-                                <td style='background-color: green;'><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
-                                <td style='background-color: green;'>Nicht möglich!</td>";
+            
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Benutzername</th>
+                        <th>Email</th>
+                        <th>Rolle</th>
+                        <th>Bearbeiten</th>
+                        <th>Löschen</th>
+                    </tr>";
+                    foreach ($benutzer as $benutzer2){
+                        echo "<tr>";
+                        if($benutzer2['role'] == 1){
+                            echo "
+                            <td style='background-color: green;'>" . $benutzer2['benutzerId'] . "</td>
+                            <td style='background-color: green;'>" . $benutzer2['username'] . "</td>
+                            <td style='background-color: green;'>" . $benutzer2['email'] . "</td>
+                            <td style='background-color: green;'>Owner</td>
+                            <td style='background-color: green;'><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
+                            <td style='background-color: green;'>Nicht möglich!</td>";
 
-                            }else {
-                                echo "
-                                <td>" . $benutzer2['benutzerId'] . "</td>
-                                <td>" . $benutzer2['username'] . "</td>
-                                <td>" . $benutzer2['email'] . "</td>
-                                <td>VIP</td>
-                                <td><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
-                                <td><a onclick='deleteBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
-                            }
-                            echo "</tr>";
+                        }else {
+                            echo "
+                            <td>" . $benutzer2['benutzerId'] . "</td>
+                            <td>" . $benutzer2['username'] . "</td>
+                            <td>" . $benutzer2['email'] . "</td>
+                            <td>VIP</td>
+                            <td><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
+                            <td><a onclick='deleteBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
                         }
-                    echo "</table>
-                </div>";
-            }else {
-                echo "<h1 class='noData'>Noch keine Benutzer vorhanden</h1>";
-            }
+                        echo "</tr>";
+                    }
+                echo "</table></div>";
+        }else {
+            echo "<h1 class='noData'>Noch keine Benutzer vorhanden</h1>";
+        }
         ?>
     </main>
 
@@ -108,7 +109,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                 <h2>Benutzer hinzufügen</h2>
             </div><br>
             <div class="modal-body">
-                <form id="formAddUser" action="benutzer_hinzufuegen" method="POST" enctype="multipart/form-data">
+                <form id="formAddUser" action="benutzer_hinzufuegen" method="POST">
                     <label for="benutzername">Benutzername:</label><br>
                     <input type="text" id="benutzername" name="benutzername"><br><br>
                     <label for="email">Email:</label><br>
@@ -123,10 +124,8 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
         </div>
     </div>
 
-    <!-- Modal um Bilder hochladen zu können -->
+    <!-- Modal -->
     <div id="addImages" class="addImages">
-
-        <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="closeImages">&times;</span>
@@ -136,28 +135,23 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                 <form id="formAddImage" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
                     <label for="titel">Titel:</label><br>
                     <input type="text" id="titel" name="titel"><br><br>
-                    <label for="lname">Beschreibung:</label><br>
+                    <label for="beschreibung">Beschreibung:</label><br>
                     <textarea name="beschreibung" id="beschreibung" cols="30" rows="10"></textarea><br><br>
                     <label for="datum">Datum:</label><br>
                     <input type="date" id="datum" name="datum"><br><br>
                     <label for="ort">Ort:</label><br>
                     <input type="text" id="ort" name="ort"><br><br>
-                    <label for="lname">Öffentlich:</label><br>
-                    <input type="checkbox" id="lname" value="Yes" name="oeffentlich"><br><br>
+                    <label for="oeffentlich">Öffentlich:</label><br>
+                    <input type="checkbox" id="oeffentlich" value="Yes" name="oeffentlich"><br><br>
                     <label for="file">Bild auswählen:</label><br>
                     <input type="file" id="myFile" name="filename"><br><br>
                     <input type="submit" value="Bild hochladen">
                 </form>
             </div>
         </div>
-
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <h1>Fotostudio</h1>
-        <p id="year"></p>
-    </footer>
+    <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
     <script src="public/js/validationAddUser.js"></script>

@@ -85,8 +85,6 @@ class LoginController{
                                 }
                             }
                         } else {
-                            // Display an error message if email doesn't exist
-                            $_SESSION["passwordDirection"] = $_POST['password'];
                             echo 
                             "<div class='loginPasswordIsWrong'>
                                 <h2>Email Adresse wurde nicht gefunden</h2>

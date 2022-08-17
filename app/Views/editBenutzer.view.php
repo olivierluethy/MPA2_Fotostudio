@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/editBenutzer.css">
+    <link rel="stylesheet" href="public/css/responsiveNav.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Benutzer bearbeiten</title>
@@ -40,19 +41,15 @@
     <form action="editBenutzer?id=<?= $getBenutzer[0][0] ?>" method="POST">
         <h2>Benutzer bearbeiten</h2>
         <label for="benutzername">Benutzername:</label><br>
-        <input type="text" id="benutzername" name="benutzername" value="<?= $getBenutzer[0][1] ?>" placeholder="Benutzernamen eingeben"><br>
+        <input type="text" id="benutzername" name="benutzername" value="<?= $getBenutzer[0][1] ?>" placeholder="Benutzernamen eingeben"><br><br>
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?= $getBenutzer[0][2] ?>" placeholder="Email Adresse eingeben"><br>
+        <input type="email" id="email" name="email" value="<?= $getBenutzer[0][2] ?>" placeholder="Email Adresse eingeben"><br><br>
         <label for="passwort">Passwort des Benutzers:</label><br>
-        <input type="password" id="passwort" name="passwort" placeholder="Passwort eingeben"><br>
+        <input type="password" id="passwort" name="passwort" placeholder="Passwort eingeben"><br><br>
         <input type="submit" value="Benutzer ändern"><br>
     </form>
 
-    <!-- Footer -->
-    <footer>
-        <h1>Fotostudio</h1>
-        <p id="year"></p>
-    </footer>
+    <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
     <script src="public/js/validationEditUser.js"></script>

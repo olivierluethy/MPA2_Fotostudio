@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/editBenutzer.css">
+    <link rel="stylesheet" href="public/css/responsiveNav.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Bild bearbeiten</title>
@@ -23,14 +24,14 @@
             <?php
             /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                echo "<button class='loginBtn' onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
+                echo "<button onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
             }else{
                 if($_SESSION['role'] == 1){
                     echo "<a href='benutzerverwaltung'>Benutzer verwalten</a>";
                 }
                 if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button class='uploadBtn' onclick='addImage()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                    echo "<button class='logoutBtn' onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
+                    echo "<button onclick='addImage()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
+                    echo "<button onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
                 }
             }
             ?>
@@ -42,7 +43,7 @@
         <label for="titel">Titel:</label><br>
         <input type="text" id="titel" name="titel" value="<?= $getImage[0][1] ?>" placeholder="Titel eingeben"><br><br>
         <label for="beschreibung">Beschreibung:</label><br>
-        <textarea id="beschreibung" name="beschreibung" id="" cols="68" rows="10" placeholder="Beschreibung eingeben"><?= $getImage[0][2] ?></textarea><br><br>
+        <textarea id="beschreibung" name="beschreibung" cols="30" rows="10" placeholder="Beschreibung eingeben"><?= $getImage[0][2] ?></textarea><br><br>
         <label for="datum">Datum:</label><br>
         <input type="date" id="datum" name="datum" value="<?= $getImage[0][3] ?>" placeholder="Datum eingeben"><br><br>
         <label for="ort">Ort:</label><br>
@@ -60,11 +61,7 @@
         <input type="submit" value="Bild ändern"><br>
     </form>
 
-    <!-- Footer -->
-    <footer>
-        <h1>Fotostudio</h1>
-        <p id="year"></p>
-    </footer>
+    <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
     <script src="public/js/validationEditImage.js"></script>
