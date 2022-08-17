@@ -1,6 +1,6 @@
 <?php
 
-class FotostudioController
+class BenutzerController
 {
 	/* Alle Benutzer anzeigen - nur mit "Owner" Rolle möglich */
 	public function benutzerverwaltung(){
@@ -11,12 +11,12 @@ class FotostudioController
 			header('Location: login');
 		}
 
-		$Fotostudio = new Fotostudio();
+		$Benutzer = new Benutzer();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		if($_SESSION['role'] == 1){
-			$benutzer = $Fotostudio -> getOwner();
+			$benutzer = $Benutzer -> getOwner();
         	$benutzer = $benutzer -> fetchAll();
 
 			require 'app/Views/benutzerverwaltung.view.php';
@@ -36,7 +36,7 @@ class FotostudioController
 			header('Location: login');
 		}
 
-		$Fotostudio = new Fotostudio();
+		$Benutzer = new Benutzer();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -46,7 +46,7 @@ class FotostudioController
 
 			$hashed_password = password_hash($_POST['passwort'], PASSWORD_DEFAULT);
 
-            $Fotostudio->benutzer_hinzufuegen($benutzername, $email, $hashed_password);
+            $Benutzer->benutzer_hinzufuegen($benutzername, $email, $hashed_password);
 
             header('Location: benutzerverwaltung');
         }
@@ -60,13 +60,13 @@ class FotostudioController
 			header('Location: login');
 		}
 
-		$Fotostudio = new Fotostudio();
+		$Benutzer = new Benutzer();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		$id = $_GET['id'];
 
-		$Fotostudio->benutzer_loeschen($id);
+		$Benutzer->benutzer_loeschen($id);
         
         header('Location: benutzerverwaltung');	
 	}
@@ -81,7 +81,7 @@ class FotostudioController
 
 		$id = $_GET['id'];
 
-		$Fotostudio = new Fotostudio();
+		$Benutzer = new Benutzer();
         $pdo = connectDatabase();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -90,12 +90,12 @@ class FotostudioController
             $email = $_POST['email'];
 			$passwort = $_POST['passwort'];
 
-			$getBenutzer = $Fotostudio -> getBenutzer($id);
+			$getBenutzer = $Benutzer -> getBenutzer($id);
         	$getBenutzer = $getBenutzer -> fetchAll();
             
 			/* Überprüfen ob das eingegebene Passwort mit dem der Datenbank übereinstimmt */
 			if(password_verify($passwort, $getBenutzer[0][3])) {
-				$Fotostudio->benutzer_bearbeiten($benutzername, $email, $id);
+				$Benutzer->benutzer_bearbeiten($benutzername, $email, $id);
 
             	header('Location: benutzerverwaltung');	
 			}else{
@@ -104,7 +104,7 @@ class FotostudioController
 			}
         }else{
 			/* Alle Benutzerdaten des VIPs anzeigen */
-			$getBenutzer = $Fotostudio -> getBenutzer($id);
+			$getBenutzer = $Benutzer -> getBenutzer($id);
         	$getBenutzer = $getBenutzer -> fetchAll();
         }
 		require 'app/Views/benutzer_bearbeiten.view.php';

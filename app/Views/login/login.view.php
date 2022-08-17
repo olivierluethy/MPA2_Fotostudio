@@ -15,12 +15,12 @@
 <body>
     <!-- Navigation Bar -->
     <nav>
-        <div class="part1" onclick="home()">
+        <div class="part1" onclick="startseite()">
             <img src="assets/icon.png" alt="">
             <h1>Fotostudio</h1>
         </div>
         <div class="part2">
-            <a href="home">Home</a>
+            <a href="startseite">Startseite</a>
         </div>
     </nav>
 

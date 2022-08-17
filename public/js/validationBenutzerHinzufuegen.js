@@ -1,6 +1,6 @@
 // Clientside Validierung - Benutzer hinzufügen
 window.addEventListener("load", function() {
-    this.document.getElementById("formAddUser").addEventListener('submit', function(evt) {
+    this.document.getElementById("formbenutzer_hinzufuegen").addEventListener('submit', function(evt) {
 
         console.log("fdefeffef");
 

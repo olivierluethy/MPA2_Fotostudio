@@ -140,7 +140,7 @@ body main .noData {
   color: white;
   margin-bottom: 3rem;
 }
-body .addImages {
+body .bild_hinzufuegens {
   display: none;
   position: fixed;
   z-index: 1;
@@ -153,7 +153,7 @@ body .addImages {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-body .addImages .modal-content {
+body .bild_hinzufuegens .modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -167,46 +167,46 @@ body .addImages .modal-content {
   animation-duration: 0.4s;
   box-shadow: 0 0 30px #ccc;
 }
-body .addImages .modal-content .modal-header {
+body .bild_hinzufuegens .modal-content .modal-header {
   padding: 2px 16px;
   background-color: lightblue;
   color: white;
 }
-body .addImages .modal-content .modal-header .closeImages {
+body .bild_hinzufuegens .modal-content .modal-header .closeImages {
   color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-body .addImages .modal-content .modal-header .closeImages:hover, body .addImages .modal-content .modal-header .closeImages:focus {
+body .bild_hinzufuegens .modal-content .modal-header .closeImages:hover, body .bild_hinzufuegens .modal-content .modal-header .closeImages:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-body .addImages .modal-content .modal-body {
+body .bild_hinzufuegens .modal-content .modal-body {
   padding: 2px 16px;
 }
-body .addImages .modal-content .modal-body input[type=text],
-body .addImages .modal-content .modal-body input[type=email],
-body .addImages .modal-content .modal-body input[type=password],
-body .addImages .modal-content .modal-body input[type=date] {
+body .bild_hinzufuegens .modal-content .modal-body input[type=text],
+body .bild_hinzufuegens .modal-content .modal-body input[type=email],
+body .bild_hinzufuegens .modal-content .modal-body input[type=password],
+body .bild_hinzufuegens .modal-content .modal-body input[type=date] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
-body .addImages .modal-content .modal-body textarea {
+body .bild_hinzufuegens .modal-content .modal-body textarea {
   box-sizing: border-box;
   width: 100%;
 }
-body .addImages .modal-content .modal-body .warning {
+body .bild_hinzufuegens .modal-content .modal-body .warning {
   color: red;
 }
-body .addImages .modal-content .modal-body input[type=checkbox] {
+body .bild_hinzufuegens .modal-content .modal-body input[type=checkbox] {
   height: 25px;
   width: 25px;
 }
-body .addImages .modal-content .modal-body input[type=submit] {
+body .bild_hinzufuegens .modal-content .modal-body input[type=submit] {
   background-color: royalblue;
   border: 2px solid royalblue;
   color: white;
@@ -221,7 +221,7 @@ body .addImages .modal-content .modal-body input[type=submit] {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-body .addImages .modal-content .modal-body input[type=submit]:hover {
+body .bild_hinzufuegens .modal-content .modal-body input[type=submit]:hover {
   background-color: lightblue;
   color: royalblue;
   border: 2px solid royalblue;
@@ -254,4 +254,4 @@ body footer {
     top: 0;
     opacity: 1;
   }
-}/*# sourceMappingURL=home.css.map */
+}/*# sourceMappingURL=startseite.css.map */

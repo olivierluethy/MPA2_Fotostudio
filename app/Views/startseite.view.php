@@ -21,33 +21,33 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/home.css">
+    <link rel="stylesheet" href="public/css/startseite.css">
     <link rel="stylesheet" href="public/css/responsiveNav.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <title>Fotostudio</title>
+    <title>Startseite</title>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav>
-        <div class="part1" onclick="home()">
+        <div class="part1" onclick="startseite()">
             <img src="assets/icon.png" alt="">
             <h1>Fotostudio</h1>
         </div>
         <div class="part2">
-            <a class="active" href="">Home</a>
+            <a class="active" href="">Startseite</a>
             <?php
             /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                echo "<button class='loginBtn' onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
+                echo "<button class='loginBtn' onclick='zuLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
             }else{
                 if($_SESSION['role'] == 1){
                     echo "<a href='benutzerverwaltung'>Benutzer verwalten</a>";
                 }
                 if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button class='uploadBtn' onclick='addImage()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                    echo "<button class='logoutBtn' onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
+                    echo "<button class='uploadBtn' onclick='bild_hinzufuegen()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
+                    echo "<button class='logoutBtn' onclick='zuLogout()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
                 }
             }
             ?>
@@ -125,8 +125,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     <td><h3>" . $picAll2['username'] . "</h3></td>
                                 </tr>
                                 <tr>
-                                    <td><button onclick='editBild(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
-                                    <td><button onclick='deleteBild(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
+                                    <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
+                                    <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
                                 </tr>
                             </table>
                         </div>
@@ -140,14 +140,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </main>
 
     <!-- Modal -->
-    <div id="addImages" class="addImages">
+    <div id="bild_hinzufuegens" class="bild_hinzufuegens">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="closeImages">&times;</span>
                 <h2>Bild hochladen</h2>
             </div><br>
             <div class="modal-body">
-                <form id="formAddImage" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
+                <form id="formbild_hinzufuegen" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
                     <label for="titel">Titel:</label><br>
                     <input type="text" id="titel" name="titel"><br><br>
                     <label for="beschreibung">Beschreibung:</label><br>
@@ -169,7 +169,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
-    <script src="public/js/validationAddImage.js"></script>
+    <script src="public/js/validationBildHinzufuegen.js"></script>
 </body>
 
 </html>

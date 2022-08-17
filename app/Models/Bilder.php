@@ -1,5 +1,5 @@
 <?php
-class Fotostudio
+class Bilder
 {
     public $db;
 
@@ -9,7 +9,7 @@ class Fotostudio
     }
 
 	/* Öffentliche Bilder anzeigen - wenn nicht eingeloggt */
-    public function picturesOpen(){
+    public function oeffentlicheBilder(){
         $statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, benutzer.username FROM images
 		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId WHERE oeffentlich = 1');
 		$statement->execute();
@@ -17,16 +17,9 @@ class Fotostudio
     }
 
 	/* Alle Bilder anzeigen - wenn eingeloggt ist*/
-	public function allPictures(){
+	public function alleBilder(){
 		$statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, benutzer.username FROM images
 		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId');
-		$statement->execute();
-        return $statement;
-	}
-
-	/* Alle Benutzer anzeigen - nur mit "Owner" Rolle möglich */
-	public function getOwner(){
-		$statement = $this->db->prepare('SELECT benutzerId, username, email, role FROM benutzer');
 		$statement->execute();
         return $statement;
 	}
@@ -50,64 +43,8 @@ class Fotostudio
 		$statement->execute();
 	}
 
-	/* Benutzer hinzufügen - VIP */
-	public function benutzer_hinzufuegen($benutzername, $email, $hashed_password){
-		$isValid = true;
-		$beschreibung = htmlspecialchars($_POST['beschreibung']);
-		$email = htmlspecialchars($_POST['email']);
-		$datum = htmlspecialchars($_POST['datum']);
-
-		/* Check if email is valid */
-		if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)){
-			$isValid = false;
-		}
-
-		if($isValid){
-			$statement = $this->db->prepare("INSERT INTO `benutzer` (username, email, password, role) VALUES (:username, :email, :password, 2)");
-			$statement->bindParam(':username', $benutzername, PDO::PARAM_STR);
-			$statement->bindParam(':email', $email, PDO::PARAM_STR);
-			$statement->bindParam(':password', $hashed_password, PDO::PARAM_STR);
-			$statement->execute();
-		}
-	}
-
-	/* Benutzer löschen */
-	public function benutzer_loeschen($id){
-		$statement = $this->db->prepare('DELETE FROM `benutzer` WHERE benutzerId = :id');
-        $statement->bindParam(':id', $id, PDO::PARAM_STR);
-        $statement->execute();
-	}
-
-	/* Informationen über den VIP-Benutzer */
-	public function getBenutzer($id){
-		$statement = $this->db->prepare('SELECT * FROM `benutzer` WHERE benutzerId = :id');
-		$statement->bindParam(':id', $id, PDO::PARAM_STR);
-		$statement->execute();
-		return $statement;
-	}
-
-	/* Benutzer bearbeiten */
-	public function benutzer_bearbeiten($benutzername, $email, $id){
-		$isValid = true;
-		$benutzername = htmlspecialchars($_POST['benutzername']);
-		$email = htmlspecialchars($_POST['email']);
-
-		/* Check if email is valid */
-		if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)){
-			$isValid = false;
-		}
-
-		if($isValid){
-			$statement = $this->db->prepare('UPDATE benutzer SET username = :username, email = :email WHERE benutzerId = :id');
-			$statement->bindParam(':username', $benutzername);
-			$statement->bindParam(':email', $email);
-			$statement->bindParam(':id', $id);
-			$statement->execute();
-		}
-	}
-
 	/* Um das Bild zu bearbeiten */
-	public function editBild($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id){
+	public function bild_bearbeiten($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties, $imgData, $id){
 		$titel = htmlspecialchars($_POST['titel']);
 		$beschreibung = htmlspecialchars($_POST['beschreibung']);
 		$datum = htmlspecialchars($_POST['datum']);
@@ -126,7 +63,7 @@ class Fotostudio
 	}
 
 	/* Informationen über das Bild erhalten */
-	public function getImage($id){
+	public function bild_information($id){
 		$statement = $this->db->prepare('SELECT * FROM `images` WHERE imageId = :id');
 		$statement->bindParam(':id', $id, PDO::PARAM_STR);
 		$statement->execute();
@@ -134,7 +71,7 @@ class Fotostudio
 	}
 
 	/* Das Bild löschen */
-	public function deleteBild($id){
+	public function bilder_loeschen($id){
 		$statement = $this->db->prepare('DELETE FROM `images` WHERE imageId = :id');
         $statement->bindParam(':id', $id, PDO::PARAM_STR);
         $statement->execute();

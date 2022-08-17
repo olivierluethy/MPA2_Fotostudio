@@ -1,6 +1,6 @@
 // Clientside Validierung - Benutzer hinzufügen
 window.addEventListener("load", function() {
-    this.document.getElementById("formAddImage").addEventListener('submit', function(evt) {
+    this.document.getElementById("formbild_hinzufuegen").addEventListener('submit', function(evt) {
 
         var errors = false;
         var warnings = document.querySelectorAll(".warning");

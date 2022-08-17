@@ -5,7 +5,7 @@ body {
     background-color: #292b31;
     main {
         margin-left: 2.8rem;
-        margin-top: 3rem;
+        margin-top: 0.5rem;
         table:nth-child(1) {
             width: 99.9%;
             border: none;
@@ -99,7 +99,7 @@ body {
         }
     }
     /* Modal um Bilder hochzuladen*/
-    .addUsers {
+    .benutzer_hinzufuegens {
         display: none;
         position: fixed;
         z-index: 1;
@@ -178,7 +178,7 @@ body {
         }
     }
     /* Modal um Bilder hochzuladen*/
-    .addImages {
+    .bild_hinzufuegens {
         display: none;
         position: fixed;
         z-index: 1;

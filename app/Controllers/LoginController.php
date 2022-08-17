@@ -7,7 +7,7 @@ class LoginController{
         
         // Check if the user is already logged in, if yes then redirect him to index page
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            header("location: home");
+            header("location: startseite");
             exit;
         }
         $pdo = connectDatabase();
@@ -73,7 +73,7 @@ class LoginController{
                                     $_SESSION["role"] = $role;
 
                                     // Redirect user to index page
-                                    header("location: home");
+                                    header("location: startseite");
                                 } else {
                                     $_SESSION["emailDirection"] = $_POST['emailuser'];
 

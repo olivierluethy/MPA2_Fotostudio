@@ -1,4 +1,22 @@
 # MPA_Fotostudio
+Ein Projekt für die Mini PA.
+
+## Aufgabenstellung
+Ein Fotograf möchte für sein Studio und auch Privat eine WebApp, um all seine Bilder zu speichern und verwalten zu können. Auf der Webseite kann man, wenn man angemeldet ist, neue Bilder hochladen die dann gespeichert werden. Zu jedem Bild können noch folgende Informationen erfasst werden: Titel, optionale Beschreibung, Datum, Ort und ob das Bild öffentlich einsehbar sein sollte. Denn neue Einträge kann man nur erfassen, wenn man angemeldet ist. Auch sieht man nur alle Bilder in der Datenbank, wenn man angemeldet ist. Denn private Fotos sollen nicht öffentlich einsehbar sein. Wenn man nicht angemeldet ist, sieht man einfach auf der Startseite die Gallerie mit den öffentlichen Bildern. In der Applikation soll es möglich sein, alle Benutzer zu verwalten und auch welche neu hinzuzufügen. Dazu soll die ganze Webseite responsiv sein und mit allen Bildgrössen klar kommen.
+
+## Bewertung
+Bewertet wird nach dem vollen Umfang des Kriterienkatalogs Teil A und B von der PA 2022 bewertet. Zusätzlich werden wir die Code-Qualität anhand folgender dieser individuellen Kriterien bewertet:
+121 - Software Ergonomie
+123 - Kommentare
+125 - Gliederung des Programms
+164 - Fehlerbehandlung
+166 - Lesbarer Code
+Individuelle Kriterien sind Kriterien, die der Betrieb zusätzlich zu den schon vorhandenen, nicht verhandelbaren, Standardkriterien stellen muss. Diese sind mehr auf die Arbeit zugeschnitten, wobei die Standardkriterien mehr allgemein sind. In der PA wird es noch einen Teil C geben, der die Präsentation bewertet. Dazu werden es sieben individuelle Kriterien sein. Nachfolgend unsere Firmenvorgaben zum Codestyle:
+Die Beschriftung erfolgt im üblichen Standard der verwendeten Programmiersprache. Wenn es unklar ist, werden sämtliche Variablen, Funktionen und Methoden in camelCase deklariert, ausgenommen Klassen in PascalCase.
+Sämtliche Namen von Variablen, Funktionen, Methoden und Klassen sind so gewählt, dass diese auf ihren Nutzen hinweisen.
+Variablen sind zuoberst bei Funktionen und Methoden deklariert.
+Der Code ist sinnvoll eingerückt und nicht alles auf einer Linie. Innerhalb des Projekts sind die Einrückungszeichen überall gleich, entweder Tabs oder Spaces.
+
 ## Verwendete Quellen
 Für Rahmen:
 https://freefrontend.com/css-frames/
@@ -38,6 +56,12 @@ https://stackoverflow.com/questions/38078957/can-we-define-min-margin-and-max-ma
 
 Um ein Wert in das Download Feld reinzutun - Kann man nicht aus Sicherheitsgründen:
 https://stackoverflow.com/questions/1696877/how-to-set-a-value-to-a-file-input-in-html
+
+Responsive Table:
+https://www.w3schools.com/howto/howto_css_table_responsive.asp
+
+Responsive Textarea:
+https://stackoverflow.com/questions/39068128/how-can-i-make-a-textarea-that-fits-within-the-width-of-the-current-viewport
 
 ## Lösungen zu Problemen
 Bilder die hochgeladen wurden auch anzeigen:

@@ -28,23 +28,23 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
 
     <!-- Navigation Bar -->
     <nav>
-        <div class="part1" onclick="home()">
+        <div class="part1" onclick="startseite()">
             <img src="assets/icon.png" alt="">
             <h1>Fotostudio</h1>
         </div>
         <div class="part2">
-            <a href="home">Home</a>
+            <a href="startseite">Startseite</a>
             <?php
             /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                echo "<button onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
+                echo "<button onclick='zuLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
             }else{
                 if($_SESSION['role'] == 1){
                     echo "<a class='active' href='benutzerverwaltung'>Benutzer verwalten</a>";
                 }
                 if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button onclick='addImage()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                    echo "<button onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
+                    echo "<button onclick='bild_hinzufuegen()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
+                    echo "<button onclick='zuLogout()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
                 }
             }
             ?>
@@ -58,7 +58,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                 <table>
                     <tr style='border:none;'>
                         <th><h1 style='color: white;'>Benutzerverwaltung</h1></th>
-                        <th><button onclick='addUser()'>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
+                        <th><button onclick='benutzer_hinzufuegen()'>Benutzer hinzufügen <i class='fas fa-plus'></i></button></th>
                     </tr>
                 </table>
             
@@ -79,7 +79,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                             <td style='background-color: green;'>" . $benutzer2['username'] . "</td>
                             <td style='background-color: green;'>" . $benutzer2['email'] . "</td>
                             <td style='background-color: green;'>Owner</td>
-                            <td style='background-color: green;'><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
+                            <td style='background-color: green;'><a onclick='benutzer_bearbeiten(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
                             <td style='background-color: green;'>Nicht möglich!</td>";
 
                         }else {
@@ -88,8 +88,8 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                             <td>" . $benutzer2['username'] . "</td>
                             <td>" . $benutzer2['email'] . "</td>
                             <td>VIP</td>
-                            <td><a onclick='editBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
-                            <td><a onclick='deleteBenutzer(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
+                            <td><a onclick='benutzer_bearbeiten(" . $benutzer2['benutzerId'] . ")'><button class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></a></td>
+                            <td><a onclick='benutzer_loeschen(" . $benutzer2['benutzerId'] . ")'><button class='delete'><i class='fas fa-trash'></i> Löschen</button></a></td>";
                         }
                         echo "</tr>";
                     }
@@ -101,7 +101,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     </main>
 
     <!-- Modal um Benutzer hinzuzufügen -->
-    <div id="addUser" class="addUsers">
+    <div id="benutzer_hinzufuegen" class="benutzer_hinzufuegens">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -109,7 +109,7 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
                 <h2>Benutzer hinzufügen</h2>
             </div><br>
             <div class="modal-body">
-                <form id="formAddUser" action="benutzer_hinzufuegen" method="POST">
+                <form id="formbenutzer_hinzufuegen" action="benutzer_hinzufuegen" method="POST">
                     <label for="benutzername">Benutzername:</label><br>
                     <input type="text" id="benutzername" name="benutzername"><br><br>
                     <label for="email">Email:</label><br>
@@ -125,14 +125,14 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     </div>
 
     <!-- Modal -->
-    <div id="addImages" class="addImages">
+    <div id="bild_hinzufuegens" class="bild_hinzufuegens">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="closeImages">&times;</span>
                 <h2>Bild hochladen</h2>
             </div><br>
             <div class="modal-body">
-                <form id="formAddImage" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
+                <form id="formbild_hinzufuegen" action="bild_hinzufuegen" method="POST" enctype="multipart/form-data">
                     <label for="titel">Titel:</label><br>
                     <input type="text" id="titel" name="titel"><br><br>
                     <label for="beschreibung">Beschreibung:</label><br>
@@ -154,8 +154,8 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
     <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
-    <script src="public/js/validationAddUser.js"></script>
-    <script src="public/js/validationAddImage.js"></script>
+    <script src="public/js/validationBenutzerHinzufuegen.js"></script>
+    <script src="public/js/validationBildHinzufuegen.js"></script>
 </body>
 
 </html>

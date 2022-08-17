@@ -9,7 +9,7 @@ body {
 }
 body main {
   margin-left: 2.8rem;
-  margin-top: 3rem;
+  margin-top: 0.5rem;
 }
 body main table:nth-child(1) {
   width: 99.9%;
@@ -90,7 +90,7 @@ body main th {
   border: 1px solid #ddd;
   text-align: left;
 }
-body .addUsers {
+body .benutzer_hinzufuegens {
   display: none;
   position: fixed;
   z-index: 1;
@@ -103,7 +103,7 @@ body .addUsers {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-body .addUsers .modal-content {
+body .benutzer_hinzufuegens .modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -117,37 +117,37 @@ body .addUsers .modal-content {
   animation-duration: 0.4s;
   box-shadow: 0 0 30px #ccc;
 }
-body .addUsers .modal-content .modal-header {
+body .benutzer_hinzufuegens .modal-content .modal-header {
   padding: 2px 16px;
   background-color: lightblue;
   color: white;
 }
-body .addUsers .modal-content .modal-header .closeUser {
+body .benutzer_hinzufuegens .modal-content .modal-header .closeUser {
   color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-body .addUsers .modal-content .modal-header .closeUser:hover, body .addUsers .modal-content .modal-header .closeUser:focus {
+body .benutzer_hinzufuegens .modal-content .modal-header .closeUser:hover, body .benutzer_hinzufuegens .modal-content .modal-header .closeUser:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-body .addUsers .modal-content .modal-body {
+body .benutzer_hinzufuegens .modal-content .modal-body {
   padding: 2px 16px;
 }
-body .addUsers .modal-content .modal-body input[type=text],
-body .addUsers .modal-content .modal-body input[type=email],
-body .addUsers .modal-content .modal-body input[type=password] {
+body .benutzer_hinzufuegens .modal-content .modal-body input[type=text],
+body .benutzer_hinzufuegens .modal-content .modal-body input[type=email],
+body .benutzer_hinzufuegens .modal-content .modal-body input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
-body .addUsers .modal-content .modal-body .warning {
+body .benutzer_hinzufuegens .modal-content .modal-body .warning {
   color: red;
 }
-body .addUsers .modal-content .modal-body input[type=submit] {
+body .benutzer_hinzufuegens .modal-content .modal-body input[type=submit] {
   background-color: royalblue;
   border: 2px solid royalblue;
   color: white;
@@ -162,12 +162,12 @@ body .addUsers .modal-content .modal-body input[type=submit] {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-body .addUsers .modal-content .modal-body input[type=submit]:hover {
+body .benutzer_hinzufuegens .modal-content .modal-body input[type=submit]:hover {
   background-color: lightblue;
   color: royalblue;
   border: 2px solid royalblue;
 }
-body .addImages {
+body .bild_hinzufuegens {
   display: none;
   position: fixed;
   z-index: 1;
@@ -180,7 +180,7 @@ body .addImages {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-body .addImages .modal-content {
+body .bild_hinzufuegens .modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -194,46 +194,46 @@ body .addImages .modal-content {
   animation-duration: 0.4s;
   box-shadow: 0 0 30px #ccc;
 }
-body .addImages .modal-content .modal-header {
+body .bild_hinzufuegens .modal-content .modal-header {
   padding: 2px 16px;
   background-color: lightblue;
   color: white;
 }
-body .addImages .modal-content .modal-header .closeImages {
+body .bild_hinzufuegens .modal-content .modal-header .closeImages {
   color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-body .addImages .modal-content .modal-header .closeImages:hover, body .addImages .modal-content .modal-header .closeImages:focus {
+body .bild_hinzufuegens .modal-content .modal-header .closeImages:hover, body .bild_hinzufuegens .modal-content .modal-header .closeImages:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-body .addImages .modal-content .modal-body {
+body .bild_hinzufuegens .modal-content .modal-body {
   padding: 2px 16px;
 }
-body .addImages .modal-content .modal-body input[type=text],
-body .addImages .modal-content .modal-body input[type=email],
-body .addImages .modal-content .modal-body input[type=password],
-body .addImages .modal-content .modal-body input[type=date] {
+body .bild_hinzufuegens .modal-content .modal-body input[type=text],
+body .bild_hinzufuegens .modal-content .modal-body input[type=email],
+body .bild_hinzufuegens .modal-content .modal-body input[type=password],
+body .bild_hinzufuegens .modal-content .modal-body input[type=date] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
-body .addImages .modal-content .modal-body textarea {
+body .bild_hinzufuegens .modal-content .modal-body textarea {
   box-sizing: border-box;
   width: 100%;
 }
-body .addImages .modal-content .modal-body input[type=checkbox] {
+body .bild_hinzufuegens .modal-content .modal-body input[type=checkbox] {
   height: 25px;
   width: 25px;
 }
-body .addImages .modal-content .modal-body .warning {
+body .bild_hinzufuegens .modal-content .modal-body .warning {
   color: red;
 }
-body .addImages .modal-content .modal-body input[type=submit] {
+body .bild_hinzufuegens .modal-content .modal-body input[type=submit] {
   background-color: royalblue;
   border: 2px solid royalblue;
   color: white;
@@ -248,7 +248,7 @@ body .addImages .modal-content .modal-body input[type=submit] {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-body .addImages .modal-content .modal-body input[type=submit]:hover {
+body .bild_hinzufuegens .modal-content .modal-body input[type=submit]:hover {
   background-color: lightblue;
   color: royalblue;
   border: 2px solid royalblue;

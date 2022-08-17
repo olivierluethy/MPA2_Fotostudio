@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/editBenutzer.css">
+    <link rel="stylesheet" href="public/css/benutzer_bearbeiten.css">
     <link rel="stylesheet" href="public/css/responsiveNav.css">
     <link rel="shortcut icon" href="assets/favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -15,30 +15,30 @@
 <body>
     <!-- Navigation Bar -->
     <nav>
-        <div class="part1" onclick="home()">
+        <div class="part1" onclick="startseite()">
             <img src="assets/icon.png" alt="">
             <h1>Fotostudio</h1>
         </div>
         <div class="part2">
-            <a class="active" href="">Home</a>
+            <a class="active" href="">Startseite</a>
             <?php
             /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                echo "<button onclick='goToLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
+                echo "<button onclick='zuLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
             }else{
                 if($_SESSION['role'] == 1){
                     echo "<a href='benutzerverwaltung'>Benutzer verwalten</a>";
                 }
                 if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button onclick='addImage()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                    echo "<button onclick='goToLogOut()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
+                    echo "<button onclick='bild_hinzufuegen()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
+                    echo "<button onclick='zuLogout()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
                 }
             }
             ?>
         </div>
     </nav>
 
-    <form action="editBild?id=<?= $getImage[0][0] ?>" method="POST" enctype="multipart/form-data">
+    <form action="bild_bearbeiten?id=<?= $getImage[0][0] ?>" method="POST" enctype="multipart/form-data">
         <h2>Bild bearbeiten</h2>
         <label for="titel">Titel:</label><br>
         <input type="text" id="titel" name="titel" value="<?= $getImage[0][1] ?>" placeholder="Titel eingeben"><br><br>
@@ -64,7 +64,7 @@
     <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
-    <script src="public/js/validationEditImage.js"></script>
+    <script src="public/js/validationBildBearbeiten.js"></script>
 </body>
 
 </html>
