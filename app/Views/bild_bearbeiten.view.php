@@ -20,7 +20,7 @@
             <h1>Fotostudio</h1>
         </div>
         <div class="part2">
-            <a class="active" href="">Startseite</a>
+            <a class="active" href="startseite">Startseite</a>
             <?php
             /* Wenn Benutzer noch nicht eingeloggt ist */
             if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
