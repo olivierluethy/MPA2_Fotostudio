@@ -123,12 +123,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                 <tr>
                                     <td><h3>Veröffentlicht von:</h3></td>
                                     <td><h3>" . $picAll2['username'] . "</h3></td>
-                                </tr>
-                                <tr>
-                                    <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
-                                    <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
-                                </tr>
-                            </table>
+                                </tr>";
+                                /* Falls der Benutzer ein Owner ist */
+                                if($_SESSION['role'] == 1){
+                                    echo "
+                                    <tr>
+                                        <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
+                                        <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
+                                    </tr>";
+                                }
+                                /* Falls der Benutzer ein VIP ist */
+                                else if($_SESSION['role'] == 2 && $picAll2['fk_benutzerId'] == $_SESSION['id']){
+                                    echo "
+                                    <tr>
+                                        <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
+                                        <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
+                                    </tr>";   
+                                }
+                            echo "</table>
                         </div>
                     </div>";
                 }

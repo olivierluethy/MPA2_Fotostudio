@@ -18,7 +18,7 @@ class Bilder
 
 	/* Alle Bilder anzeigen - wenn eingeloggt ist*/
 	public function alleBilder(){
-		$statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, benutzer.username FROM images
+		$statement = $this->db->prepare('SELECT images.imageId, images.titel, images.beschreibung, images.datum, images.ort, images.imageType, images.imageData, images.fk_benutzerId, benutzer.username FROM images
 		INNER JOIN benutzer ON benutzer.benutzerId = images.fk_benutzerId');
 		$statement->execute();
         return $statement;
