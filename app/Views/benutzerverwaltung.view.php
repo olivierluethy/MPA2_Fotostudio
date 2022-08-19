@@ -111,13 +111,13 @@ if((isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true) && $_SESSION[
             <div class="modal-body">
                 <form id="formbenutzer_hinzufuegen" action="benutzer_hinzufuegen" method="POST">
                     <label for="benutzername">Benutzername:</label><br>
-                    <input type="text" id="benutzername" name="benutzername"><br><br>
+                    <input type="text" id="benutzername" name="benutzername" placeholder="Benutzername eingeben"><br><br>
                     <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email"><br><br>
+                    <input type="email" id="email" name="email" placeholder="Email eingeben"><br><br>
                     <label for="passwort">Passwort:</label><br>
-                    <input type="password" id="passwort" name="passwort"><br><br>
+                    <input type="password" id="passwort" name="passwort" placeholder="Passwort eingeben"><br><br>
                     <label for="passwort_bestaetigen">Passwort bestätigen:</label><br>
-                    <input type="password" id="passwort_bestaetigen" name="passwort_bestaetigen"><br><br>
+                    <input type="password" id="passwort_bestaetigen" name="passwort_bestaetigen" placeholder="Passwort noch einmal eingeben"><br><br>
                     <input type="submit" value="Benutzer hinzufügen">
                 </form>
             </div>
