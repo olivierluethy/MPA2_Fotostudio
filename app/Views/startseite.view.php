@@ -129,7 +129,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     echo "
                                     <tr>
                                         <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
-                                        <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
+                                        <td><button onclick='bild_loeschen(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
                                     </tr>";
                                 }
                                 /* Falls der Benutzer ein VIP ist */
@@ -137,7 +137,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     echo "
                                     <tr>
                                         <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild bearbeiten' class='edit'><i class='fas fa-edit'></i> Bearbeiten</button></td>
-                                        <td><button onclick='bild_bearbeiten(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
+                                        <td><button onclick='bild_loeschen(" . $picAll2['imageId'] . ")' title='Bild löschen' class='delete'><i class='fas fa-trash'></i> Löschen</button></td>
                                     </tr>";   
                                 }
                             echo "</table>

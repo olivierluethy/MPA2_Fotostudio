@@ -65,7 +65,7 @@ class BilderController
 		}
 	}
 
-    /* Bild bearbeiten - nur für "Owner" möglich */
+    /* Bild bearbeiten - für "Owner" möglich, aber auch für "VIP" wenn es sein eigenes Bild ist möglich */
 	public function bild_bearbeiten(){
 		// Initialize the session
         session_start();
@@ -112,8 +112,8 @@ class BilderController
         }
 	}
 
-    /* Bild bearbeiten - nur für "Owner" möglich */
-	public function bilder_loeschen(){
+    /* Bild löschen - für "Owner" möglich, aber auch für "VIP" wenn es sein eigenes Bild ist möglich */
+	public function bild_loeschen(){
 		// Initialize the session
         session_start();
 
