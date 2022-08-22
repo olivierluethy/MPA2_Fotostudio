@@ -22,7 +22,7 @@ class Benutzer
 		$email = htmlspecialchars($_POST['email']);
 		$datum = htmlspecialchars($_POST['datum']);
 
-		/* Check if email is valid */
+		/* Überprüfe ob Email gültig ist */
 		if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)){
 			$isValid = false;
 		}
@@ -57,7 +57,7 @@ class Benutzer
 		$benutzername = htmlspecialchars($_POST['benutzername']);
 		$email = htmlspecialchars($_POST['email']);
 
-		/* Check if email is valid */
+		/* Überprüfe ob Email gültig ist */
 		if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)){
 			$isValid = false;
 		}

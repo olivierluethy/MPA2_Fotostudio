@@ -28,6 +28,7 @@ class BenutzerController
 		}
 	}
 
+	/* Benutzer hinzufügen - nur mit "Owner" Rolle möglich */
 	public function benutzer_hinzufuegen(){
 		// Initialize the session
         session_start();
@@ -52,6 +53,7 @@ class BenutzerController
         }
 	}
 
+	/* Benutzer löschen - nur mit "Owner" Rolle möglich */
 	public function benutzer_loeschen(){
 		// Initialize the session
         session_start();
@@ -71,6 +73,7 @@ class BenutzerController
         header('Location: benutzerverwaltung');	
 	}
 
+	/* Benutzer bearbeiten - nur mit "Owner" Rolle möglich */
 	public function benutzer_bearbeiten(){
 		// Initialize the session
         session_start();

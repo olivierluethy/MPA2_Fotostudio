@@ -1,7 +1,6 @@
 // Clientside Validierung - Login
 window.addEventListener("load", function() {
     this.document.querySelector("form").addEventListener('submit', function(evt) {
-
         var errors = false;
         var warnings = document.querySelectorAll(".warning");
         if (warnings != null) {

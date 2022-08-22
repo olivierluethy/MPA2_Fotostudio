@@ -1,11 +1,14 @@
 <?php
+/* Überprüfe ob Benutzer eingeloggt ist oder nicht */
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    /* Wenn nicht eingeloggt */
     $picOpenCounter = 0;
 
     foreach ($picOpen as $picOpen2){
         $picOpenCounter++;
     }
 }else if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
+    /* Wenn eingeloggt */
     $picAllCounter = 0;
 
     foreach ($picAll as $picAll2){

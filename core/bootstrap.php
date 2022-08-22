@@ -6,4 +6,3 @@ require 'core/database.php';
 /* Models */
 require 'app/Models/Benutzer.php';
 require 'app/Models/Bilder.php';
-require 'app/Models/Login.php';

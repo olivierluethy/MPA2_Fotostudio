@@ -101,6 +101,7 @@ class LoginController{
         }
     }
 
+    /* Damit sich der eingeloggte Benutzer wieder ausloggen kann */
     public function logout(){
         // Initialize the session
         session_start();
