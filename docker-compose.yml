@@ -1,0 +1,66 @@
+# Fotostudio – komplettes Setup mit Docker Compose.
+#
+#   docker compose up --build        -> alles starten
+#
+# Erreichbar danach:
+#   Web-App     : http://localhost:8800
+#   phpMyAdmin  : http://localhost:8801   (Server: db, Benutzer: root, Passwort: leer)
+#   MySQL       : localhost:3400          (für externe Tools, Benutzer: root, ohne Passwort)
+
+services:
+  # ---------------------------------------------------------------- Datenbank
+  db:
+    image: mysql:8.0
+    container_name: fotostudio_db
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"   # entspricht den App-Vorgaben (root / kein Passwort)
+      MYSQL_ROOT_HOST: "%"                # root-Zugriff auch aus anderen Containern
+      MYSQL_DATABASE: fotostudio
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    ports:
+      - "3400:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  # ------------------------------------------------------------------- Web-App
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: fotostudio_web
+    environment:
+      DB_HOST: db
+      DB_NAME: fotostudio
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+    volumes:
+      # Code als Volume mounten -> Änderungen sind sofort sichtbar (kein Rebuild).
+      - ./:/var/www/html
+    ports:
+      - "8800:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # ---------------------------------------------------------------- phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: fotostudio_phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ""
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "8801:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:

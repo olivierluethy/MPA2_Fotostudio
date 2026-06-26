@@ -18,7 +18,7 @@ class LoginController{
         // Include config file
         // https://www.php.net/manual/de/function.require-once.php
         define('__ROOT__', dirname(dirname(__FILE__)));
-        require_once(__ROOT__.'\Views\login\config.php');
+        require_once(__ROOT__.'/Views/login/config.php');
 
         // Define variables and initialize with empty values
         $email = $password = "";
