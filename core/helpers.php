@@ -18,6 +18,30 @@ function post(string $key, $default = '')
 }
 
 /**
+ * Formatiert ein ISO-Datum (Y-m-d) einheitlich im de-CH-Stil.
+ *  - kompakt:  TT.MM.JJJJ      (z.B. 22.11.2025) für Tabellen/Listen
+ *  - lang:     22. November 2025 für die Museums-Schilder
+ * Nicht parsebare/leere Werte werden unverändert zurückgegeben.
+ */
+function formatDatum(?string $iso, bool $long = false): string
+{
+    if (!$iso) {
+        return '';
+    }
+    try {
+        $d = new DateTime($iso);
+    } catch (Exception $e) {
+        return $iso;
+    }
+    if ($long) {
+        $monate = [1 => 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                   'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+        return (int)$d->format('j') . '. ' . $monate[(int)$d->format('n')] . ' ' . $d->format('Y');
+    }
+    return $d->format('d.m.Y');
+}
+
+/**
  * Stellt eine Verbindung zur Datenbank her und gibt die
  * Datenbankverbindung als PDO zurück.
  */
