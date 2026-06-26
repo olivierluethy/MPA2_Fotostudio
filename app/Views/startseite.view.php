@@ -110,7 +110,6 @@ $bilder  = $istEingeloggt ? ($picAll ?? []) : ($picOpen ?? []);
 
     <script src="public/js/main.js"></script>
     <script src="public/js/validationBildHinzufuegen.js"></script>
-    <script src="public/js/bilder.js"></script>
 </body>
 
 </html>

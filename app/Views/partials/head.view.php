@@ -71,6 +71,9 @@ $rolle = $_SESSION['role'] ?? null;
         ::-webkit-scrollbar-thumb:hover { background: #3a3a42; }
         .warning { display: inline-block; margin-top: .35rem; color: #fca5a5; font-size: .8rem; }
     </style>
+
+    <!-- Modal-/Bild-Logik global (null-sicher, läuft nur wo die Elemente existieren) -->
+    <script src="public/js/bilder.js" defer></script>
 </head>
 
 <body class="min-h-screen bg-wall font-sans text-neutral-200 antialiased">
@@ -105,7 +108,7 @@ $rolle = $_SESSION['role'] ?? null;
                         </a>
                     <?php endif; ?>
                     <?php if ($rolle == 1 || $rolle == 2): ?>
-                        <button type="button" onclick="bild_hinzufuegen()"
+                        <button type="button" onclick="openUploadModal()"
                             class="inline-flex items-center gap-2 rounded-lg bg-gold/90 px-3 py-2 text-sm font-semibold text-wall transition hover:bg-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
                             Bild hochladen

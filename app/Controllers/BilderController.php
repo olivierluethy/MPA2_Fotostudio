@@ -46,20 +46,17 @@ class BilderController
                     $imgData = file_get_contents($_FILES['filename']['tmp_name']);
                     $imageProperties = getimageSize($_FILES['filename']['tmp_name']);
 
-					$titel = $_POST['titel'];
-					$beschreibung = $_POST['beschreibung'];
-					$datum = $_POST['datum'];
-					$ort = $_POST['ort'];
-					$oeffentlich = $_POST['oeffentlich'];
-					if ($oeffentlich == 'Yes') {
-						$oeffentlich = 1;
-					}else {
-						$oeffentlich = 0;
-					}
+					$titel = $_POST['titel'] ?? '';
+					$beschreibung = $_POST['beschreibung'] ?? '';
+					$datum = $_POST['datum'] ?? '';
+					$ort = $_POST['ort'] ?? '';
+					/* Checkbox: gesetzt -> 'Yes', sonst nicht vorhanden -> 0 */
+					$oeffentlich = (($_POST['oeffentlich'] ?? '') === 'Yes') ? 1 : 0;
 
             		$Bilder->bild_hinzufuegen($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties['mime'], $imgData, $_SESSION['id']);
 
 					header("location: startseite");
+					exit;
 				}
 			}
 		}

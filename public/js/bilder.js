@@ -97,3 +97,99 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeEditModal(); });
 });
+
+
+/* ------------------------------------------------------------------ Upload */
+
+/* Schaltet die Upload-UI je nachdem, ob eine Datei gewählt wurde. */
+function _setUploadImagePresent(present) {
+    var submit = document.getElementById('upload_submit');
+    var err = document.getElementById('upload_imgError');
+    var noimg = document.getElementById('upload_noimage');
+    var prev = document.getElementById('upload_preview');
+    var rem = document.getElementById('upload_remove');
+    var lbl = document.getElementById('upload_choose_label');
+    if (!submit) return;
+    if (present) {
+        submit.disabled = false;
+        err.classList.add('hidden');
+        noimg.classList.add('hidden');
+        prev.classList.remove('hidden');
+        rem.classList.remove('hidden');
+        rem.classList.add('flex');
+        if (lbl) lbl.textContent = 'Anderes Bild';
+    } else {
+        submit.disabled = true;
+        noimg.classList.remove('hidden');
+        prev.classList.add('hidden');
+        prev.src = '';
+        rem.classList.add('hidden');
+        rem.classList.remove('flex');
+        if (lbl) lbl.textContent = 'Bild auswählen';
+    }
+}
+
+/* Öffnet das Upload-Modal (oder leitet zur Galerie, falls es dort nicht existiert). */
+function openUploadModal() {
+    var modal = document.getElementById('uploadModal');
+    if (!modal) { location.href = 'startseite'; return; }
+    var form = document.getElementById('formbild_hinzufuegen');
+    if (form) form.reset();
+    removeUploadImage();
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeUploadModal() {
+    var modal = document.getElementById('uploadModal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+
+/* Entfernt die gewählte Datei -> Upload erst nach neuer Auswahl möglich. */
+function removeUploadImage() {
+    var f = document.getElementById('myFile');
+    if (f) f.value = '';
+    _setUploadImagePresent(false);
+    var err = document.getElementById('upload_imgError');
+    if (err) err.classList.add('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var uf = document.getElementById('myFile');
+    if (uf) {
+        uf.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('upload_preview').src = e.target.result;
+                    _setUploadImagePresent(true);
+                };
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                _setUploadImagePresent(false);
+            }
+        });
+    }
+
+    var uform = document.getElementById('formbild_hinzufuegen');
+    if (uform) {
+        uform.addEventListener('submit', function (evt) {
+            var f = document.getElementById('myFile');
+            if (!f || !f.files || f.files.length === 0) {
+                evt.preventDefault();
+                _setUploadImagePresent(false);
+                document.getElementById('upload_imgError').classList.remove('hidden');
+            }
+        });
+    }
+
+    var um = document.getElementById('uploadModal');
+    if (um) {
+        um.addEventListener('click', function (e) { if (e.target === um) closeUploadModal(); });
+    }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeUploadModal(); });
+});
