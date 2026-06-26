@@ -74,6 +74,8 @@ $rolle = $_SESSION['role'] ?? null;
 
     <!-- Modal-/Bild-Logik global (null-sicher, läuft nur wo die Elemente existieren) -->
     <script src="public/js/bilder.js" defer></script>
+    <!-- Ort-Autocomplete (Photon) für Upload-/Edit-Modal -->
+    <script src="public/js/ort_autocomplete.js" defer></script>
 </head>
 
 <body class="min-h-screen bg-wall font-sans text-neutral-200 antialiased">
