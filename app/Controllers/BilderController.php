@@ -81,29 +81,34 @@ class BilderController
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			/* For Image Upload */
-            if(count($_FILES) > 0) {
-                if(is_uploaded_file($_FILES['filename']['tmp_name'])) {
-                    $imgData = file_get_contents($_FILES['filename']['tmp_name']);
-                    $imageProperties = getimageSize($_FILES['filename']['tmp_name']);
+			/* Metadaten immer einlesen */
+			$titel        = $_POST['titel'] ?? '';
+			$beschreibung = $_POST['beschreibung'] ?? '';
+			$datum        = $_POST['datum'] ?? '';
+			$ort          = $_POST['ort'] ?? '';
+			/* Checkbox: gesetzt -> 'Yes', sonst nicht vorhanden -> 0 */
+			$oeffentlich  = (($_POST['oeffentlich'] ?? '') === 'Yes') ? 1 : 0;
+			/* keepImage = 1 -> bestehendes Bild behalten (aus dem Modal) */
+			$keepImage    = (($_POST['keepImage'] ?? '1') === '1');
 
-					$titel = $_POST['titel'];
-					$beschreibung = $_POST['beschreibung'];
-					$datum = $_POST['datum'];
-					$ort = $_POST['ort'];
-					$oeffentlich = $_POST['oeffentlich'];
+			$hasNewFile = isset($_FILES['filename']) && is_uploaded_file($_FILES['filename']['tmp_name']);
 
-					if ($oeffentlich == 'Yes') {
-						$oeffentlich = 1;
-					}else {
-						$oeffentlich = 0;
-					}
-            
-					$Bilder->bild_bearbeiten($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties['mime'], $imgData, $id);
-
-            		header('Location: startseite');
-				}
+			if ($hasNewFile) {
+				/* Neues Bild gewählt -> Bild + Metadaten ersetzen */
+				$imgData = file_get_contents($_FILES['filename']['tmp_name']);
+				$imageProperties = getimagesize($_FILES['filename']['tmp_name']);
+				$Bilder->bild_bearbeiten($titel, $beschreibung, $datum, $ort, $oeffentlich, $imageProperties['mime'], $imgData, $id);
+				header('Location: startseite');
+			} elseif ($keepImage) {
+				/* Kein neues Bild, bestehendes behalten -> nur Metadaten aktualisieren */
+				$Bilder->bild_metadaten_bearbeiten($titel, $beschreibung, $datum, $ort, $oeffentlich, $id);
+				header('Location: startseite');
+			} else {
+				/* Bild entfernt und kein Ersatz gewählt -> nicht speichern
+				   (Server-seitige Absicherung: ein Eintrag verliert nie sein Bild). */
+				header('Location: startseite');
 			}
+			exit;
         }else{
 			$getImage = $Bilder -> bild_information($id);
         	$getImage = $getImage -> fetchAll();

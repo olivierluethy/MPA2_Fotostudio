@@ -62,6 +62,24 @@ class Bilder
 		$statement->execute();
 	}
 
+	/* Nur Metadaten aktualisieren - das bestehende Bild (imageData) bleibt erhalten.
+	   Wird genutzt, wenn beim Bearbeiten kein neues Bild gewählt wurde. */
+	public function bild_metadaten_bearbeiten($titel, $beschreibung, $datum, $ort, $oeffentlich, $id){
+		$titel = htmlspecialchars($titel);
+		$beschreibung = htmlspecialchars($beschreibung);
+		$datum = htmlspecialchars($datum);
+		$ort = htmlspecialchars($ort);
+
+		$statement = $this->db->prepare('UPDATE images SET titel = :titel, beschreibung = :beschreibung, datum = :datum, ort = :ort, oeffentlich = :oeffentlich WHERE imageId = :id');
+		$statement->bindParam(':titel', $titel, PDO::PARAM_STR);
+		$statement->bindParam(':beschreibung', $beschreibung, PDO::PARAM_STR);
+		$statement->bindParam(':datum', $datum, PDO::PARAM_STR);
+		$statement->bindParam(':ort', $ort, PDO::PARAM_STR);
+		$statement->bindParam(':oeffentlich', $oeffentlich, PDO::PARAM_INT);
+		$statement->bindParam(':id', $id, PDO::PARAM_STR);
+		$statement->execute();
+	}
+
 	/* Informationen über das Bild erhalten */
 	public function bild_information($id){
 		$statement = $this->db->prepare('SELECT * FROM `images` WHERE imageId = :id');
