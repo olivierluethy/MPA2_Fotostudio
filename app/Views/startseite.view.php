@@ -50,7 +50,14 @@ $bilder  = $istEingeloggt ? ($picAll ?? []) : ($picOpen ?? []);
                                         <p class="text-sm leading-relaxed text-neutral-100"><?= e($bild['beschreibung']) ?></p>
                                         <?php if ($canEdit): ?>
                                             <div class="mt-3 flex gap-2">
-                                                <button type="button" onclick="bild_bearbeiten(<?= $bild['imageId'] ?>)" title="Bild bearbeiten"
+                                                <button type="button" title="Bild bearbeiten"
+                                                        onclick="openEditModal(this)"
+                                                        data-id="<?= $bild['imageId'] ?>"
+                                                        data-titel="<?= e($bild['titel']) ?>"
+                                                        data-beschreibung="<?= e($bild['beschreibung']) ?>"
+                                                        data-datum="<?= e($bild['datum']) ?>"
+                                                        data-ort="<?= e($bild['ort']) ?>"
+                                                        data-oeffentlich="<?= (int)$istOeffentlich ?>"
                                                         class="rounded-lg bg-gold/90 px-3 py-1.5 text-xs font-semibold text-wall transition hover:bg-gold">Bearbeiten</button>
                                                 <button type="button" onclick="bild_loeschen(<?= $bild['imageId'] ?>)" title="Bild löschen"
                                                         class="rounded-lg border border-red-500/50 bg-red-950/60 px-3 py-1.5 text-xs font-semibold text-red-200 transition hover:bg-red-900/70">Löschen</button>
@@ -96,10 +103,14 @@ $bilder  = $istEingeloggt ? ($picAll ?? []) : ($picOpen ?? []);
     </main>
 
     <?php include('app/Views/bild_hinzufuegen.view.php'); ?>
+    <?php if ($istEingeloggt && ($rolle == 1 || $rolle == 2)): ?>
+        <?php include('app/Views/bild_bearbeiten_modal.view.php'); ?>
+    <?php endif; ?>
     <?php include('app/Views/footer.view.php'); ?>
 
     <script src="public/js/main.js"></script>
     <script src="public/js/validationBildHinzufuegen.js"></script>
+    <script src="public/js/bilder.js"></script>
 </body>
 
 </html>
