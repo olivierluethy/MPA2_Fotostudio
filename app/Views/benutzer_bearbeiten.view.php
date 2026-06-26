@@ -1,53 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php $pageTitle = 'Benutzer bearbeiten'; $activeNav = 'benutzerverwaltung'; include('app/Views/partials/head.view.php'); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/benutzer_bearbeiten.css">
-    <link rel="stylesheet" href="public/css/responsiveNav.css">
-    <link rel="shortcut icon" href="assets/favicon.ico">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <title>Benutzer bearbeiten</title>
-</head>
-
-<body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="part1" onclick="startseite()">
-            <img src="assets/icon.png" alt="">
-            <h1>Fotostudio</h1>
-        </div>
-        <div class="part2">
-            <a class="active" href="">Startseite</a>
-            <?php
-            /* Wenn Benutzer noch nicht eingeloggt ist */
-            if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                echo "<button onclick='zuLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
-            }else{
-                if($_SESSION['role'] == 1){
-                    echo "<a href='benutzerverwaltung'>Benutzer verwalten</a>";
-                }
-                if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button onclick='bild_hinzufuegen()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                    echo "<button onclick='zuLogout()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
-                }
-            }
-            ?>
-        </div>
-    </nav>
-
-    <form action="benutzer_bearbeiten?id=<?= $getBenutzer[0][0] ?>" method="POST">
-        <h2>Benutzer bearbeiten</h2>
-        <label for="benutzername">Benutzername:</label><br>
-        <input type="text" id="benutzername" name="benutzername" value="<?= $getBenutzer[0][1] ?>" placeholder="Benutzernamen eingeben"><br><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?= $getBenutzer[0][2] ?>" placeholder="Email Adresse eingeben"><br><br>
-        <label for="passwort">Passwort des Benutzers:</label><br>
-        <input type="password" id="passwort" name="passwort" placeholder="Passwort eingeben"><br><br>
-        <input type="submit" value="Benutzer ändern"><br>
-    </form>
+    <main class="mx-auto max-w-2xl px-4 py-10 sm:px-6">
+        <h2 class="mb-6 font-serif text-3xl font-semibold text-frame">Benutzer bearbeiten</h2>
+        <form action="benutzer_bearbeiten?id=<?= $getBenutzer[0][0] ?>" method="POST"
+              class="space-y-5 rounded-2xl border border-line bg-panel p-6 shadow-frame">
+            <div>
+                <label for="benutzername" class="mb-1 block text-sm font-medium text-neutral-300">Benutzername:</label>
+                <input type="text" id="benutzername" name="benutzername" value="<?= $getBenutzer[0][1] ?>" placeholder="Benutzernamen eingeben"
+                       class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+            </div>
+            <div>
+                <label for="email" class="mb-1 block text-sm font-medium text-neutral-300">Email:</label>
+                <input type="email" id="email" name="email" value="<?= $getBenutzer[0][2] ?>" placeholder="Email Adresse eingeben"
+                       class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+            </div>
+            <div>
+                <label for="passwort" class="mb-1 block text-sm font-medium text-neutral-300">Passwort des Benutzers:</label>
+                <input type="password" id="passwort" name="passwort" placeholder="Passwort eingeben"
+                       class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+            </div>
+            <button type="submit"
+                    class="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-wall transition hover:bg-gold/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60">
+                Benutzer ändern
+            </button>
+        </form>
+    </main>
 
     <?php include('app/Views/footer.view.php'); ?>
 

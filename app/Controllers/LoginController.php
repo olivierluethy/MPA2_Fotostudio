@@ -84,16 +84,16 @@ class LoginController{
                                     $_SESSION["emailDirection"] = $_POST['emailuser'];
 
                                     // Display an error message if password is not valid
-                                    echo 
-                                    "<div class='loginPasswordIsWrong'>
-                                        <h2>Passwort ungültig</h2>
+                                    echo
+                                    "<div class='fixed left-1/2 top-4 z-50 -translate-x-1/2 rounded-lg border border-red-500/40 bg-red-950/90 px-5 py-3 text-center text-red-200 shadow-frame backdrop-blur'>
+                                        <h2 class='text-sm font-semibold'>Passwort ungültig</h2>
                                     </div>";
                                 }
                             }
                         } else {
-                            echo 
-                            "<div class='loginPasswordIsWrong'>
-                                <h2>Email Adresse wurde nicht gefunden</h2>
+                            echo
+                            "<div class='fixed left-1/2 top-4 z-50 -translate-x-1/2 rounded-lg border border-red-500/40 bg-red-950/90 px-5 py-3 text-center text-red-200 shadow-frame backdrop-blur'>
+                                <h2 class='text-sm font-semibold'>Email Adresse wurde nicht gefunden</h2>
                             </div>";
                         }
                     } else {

@@ -1,65 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php $pageTitle = 'Bild bearbeiten'; $activeNav = 'startseite'; include('app/Views/partials/head.view.php'); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/benutzer_bearbeiten.css">
-    <link rel="stylesheet" href="public/css/responsiveNav.css">
-    <link rel="shortcut icon" href="assets/favicon.ico">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <title>Bild bearbeiten</title>
-</head>
-
-<body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="part1" onclick="startseite()">
-            <img src="assets/icon.png" alt="">
-            <h1>Fotostudio</h1>
-        </div>
-        <div class="part2">
-            <a class="active" href="startseite">Startseite</a>
-            <?php
-            /* Wenn Benutzer noch nicht eingeloggt ist */
-            if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                echo "<button onclick='zuLogin()'>Einloggen  <i class='fas fa-sign-in-alt'></i></button>";
-            }else{
-                if($_SESSION['role'] == 1){
-                    echo "<a href='benutzerverwaltung'>Benutzer verwalten</a>";
-                }
-                if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) {
-                    echo "<button onclick='bild_hinzufuegen()'>Bild hochladen <i class='fas fa-plus-circle'></i></button>";
-                    echo "<button onclick='zuLogout()'>Ausloggen  <i class='fas fa-sign-out-alt'></i></button>";
-                }
-            }
-            ?>
-        </div>
-    </nav>
-
-    <form action="bild_bearbeiten?id=<?= $getImage[0][0] ?>" method="POST" enctype="multipart/form-data">
-        <h2>Bild bearbeiten</h2>
-        <label for="titel">Titel:</label><br>
-        <input type="text" id="titel" name="titel" value="<?= $getImage[0][1] ?>" placeholder="Titel eingeben"><br><br>
-        <label for="beschreibung">Beschreibung:</label><br>
-        <textarea id="beschreibung" name="beschreibung" cols="30" rows="10" placeholder="Beschreibung eingeben"><?= $getImage[0][2] ?></textarea><br><br>
-        <label for="datum">Datum:</label><br>
-        <input type="date" id="datum" name="datum" value="<?= $getImage[0][3] ?>" placeholder="Datum eingeben"><br><br>
-        <label for="ort">Ort:</label><br>
-        <input type="text" id="ort" name="ort" value="<?= $getImage[0][4] ?>" placeholder="Ort eingeben"><br><br>
-        <label for="oeffentlich">Öffentlich:</label><br>
-        <?php
-        if($getImage[0][5] == 1){
-            echo "<input type='checkbox' id='oeffentlich' name='oeffentlich' value='Yes' checked placeholder='Öffentlich eingeben'><br><br>";
-        }else {
-            echo "<input type='checkbox' id='oeffentlich' name='oeffentlich' value='Yes' placeholder='Öffentlich eingeben'><br><br>";
-        }
-        ?>
-        <label for="file">Bild auswählen:</label><br>
-        <input type="file" id="myFile" name="filename"><br><br>
-        <input type="submit" value="Bild ändern"><br>
-    </form>
+    <main class="mx-auto max-w-2xl px-4 py-10 sm:px-6">
+        <h2 class="mb-6 font-serif text-3xl font-semibold text-frame">Bild bearbeiten</h2>
+        <form action="bild_bearbeiten?id=<?= $getImage[0][0] ?>" method="POST" enctype="multipart/form-data"
+              class="space-y-5 rounded-2xl border border-line bg-panel p-6 shadow-frame">
+            <div>
+                <label for="titel" class="mb-1 block text-sm font-medium text-neutral-300">Titel:</label>
+                <input type="text" id="titel" name="titel" value="<?= $getImage[0][1] ?>" placeholder="Titel eingeben"
+                       class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+            </div>
+            <div>
+                <label for="beschreibung" class="mb-1 block text-sm font-medium text-neutral-300">Beschreibung:</label>
+                <textarea id="beschreibung" name="beschreibung" rows="5" placeholder="Beschreibung eingeben"
+                          class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40"><?= $getImage[0][2] ?></textarea>
+            </div>
+            <div>
+                <label for="datum" class="mb-1 block text-sm font-medium text-neutral-300">Datum:</label>
+                <input type="date" id="datum" name="datum" value="<?= $getImage[0][3] ?>"
+                       class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 [color-scheme:dark] focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+            </div>
+            <div>
+                <label for="ort" class="mb-1 block text-sm font-medium text-neutral-300">Ort:</label>
+                <input type="text" id="ort" name="ort" value="<?= $getImage[0][4] ?>" placeholder="Ort eingeben"
+                       class="w-full rounded-lg border border-line bg-wall px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+            </div>
+            <label class="flex items-center gap-3 text-sm font-medium text-neutral-300">
+                <input type="checkbox" id="oeffentlich" name="oeffentlich" value="Yes" <?= $getImage[0][5] == 1 ? 'checked' : '' ?>
+                       class="h-4 w-4 rounded border-line bg-wall text-gold focus:ring-gold/40">
+                Öffentlich
+            </label>
+            <div>
+                <label for="myFile" class="mb-1 block text-sm font-medium text-neutral-300">Bild auswählen:</label>
+                <input type="file" id="myFile" name="filename"
+                       class="block w-full text-sm text-neutral-300 file:mr-4 file:rounded-lg file:border-0 file:bg-gold/90 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-wall hover:file:bg-gold">
+            </div>
+            <button type="submit"
+                    class="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2.5 text-sm font-semibold text-wall transition hover:bg-gold/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60">
+                Bild ändern
+            </button>
+        </form>
+    </main>
 
     <?php include('app/Views/footer.view.php'); ?>
 
