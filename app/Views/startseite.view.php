@@ -50,7 +50,7 @@ $bilder  = $istEingeloggt ? ($picAll ?? []) : ($picOpen ?? []);
                                         <p class="text-sm leading-relaxed text-neutral-100"><?= e($bild['beschreibung']) ?></p>
                                         <?php if ($canEdit): ?>
                                             <div class="mt-3 flex gap-2">
-                                                <button type="button" title="Bild bearbeiten"
+                                                <button type="button" title="Bild bearbeiten" aria-label="Bild bearbeiten"
                                                         onclick="openEditModal(this)"
                                                         data-id="<?= $bild['imageId'] ?>"
                                                         data-titel="<?= e($bild['titel']) ?>"
@@ -58,9 +58,13 @@ $bilder  = $istEingeloggt ? ($picAll ?? []) : ($picOpen ?? []);
                                                         data-datum="<?= e($bild['datum']) ?>"
                                                         data-ort="<?= e($bild['ort']) ?>"
                                                         data-oeffentlich="<?= (int)$istOeffentlich ?>"
-                                                        class="rounded-lg bg-gold/90 px-3 py-1.5 text-xs font-semibold text-wall transition hover:bg-gold">Bearbeiten</button>
-                                                <button type="button" onclick="bild_loeschen(<?= $bild['imageId'] ?>)" title="Bild löschen"
-                                                        class="rounded-lg border border-red-500/50 bg-red-950/60 px-3 py-1.5 text-xs font-semibold text-red-200 transition hover:bg-red-900/70">Löschen</button>
+                                                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gold/90 text-wall transition hover:bg-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                                </button>
+                                                <button type="button" onclick="bild_loeschen(<?= $bild['imageId'] ?>)" title="Bild löschen" aria-label="Bild löschen"
+                                                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-red-500/50 bg-red-950/60 text-red-200 transition hover:bg-red-900/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                                </button>
                                             </div>
                                         <?php endif; ?>
                                     </div>
