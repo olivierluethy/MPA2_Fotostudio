@@ -2,6 +2,10 @@
 
 class LoginController{
     public function login(){
+        // Output buffering, damit nach der Ausgabe der View weiterhin
+        // Redirect-Header (header("location: ...")) gesendet werden können.
+        ob_start();
+
         // Initialize the session
         session_start();
         
@@ -63,8 +67,9 @@ class LoginController{
                                 $role = $row["role"];
                                 $hashed_password = $row["password"];
                                 if(password_verify($password, $hashed_password)){
-                                    // Password is correct, so start a new session
-                                    session_start();
+                                    // Password is correct. Die Session ist bereits
+                                    // aktiv (siehe session_start() oben), daher hier
+                                    // kein erneuter Aufruf nötig.
 
                                     // Store data in session variables
                                     $_SESSION["loggedin"] = true;
@@ -74,6 +79,7 @@ class LoginController{
 
                                     // Redirect user to index page
                                     header("location: startseite");
+                                    exit;
                                 } else {
                                     $_SESSION["emailDirection"] = $_POST['emailuser'];
 
