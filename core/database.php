@@ -9,7 +9,9 @@ function connectDatabase() {
         $name = getenv('DB_NAME') ?: 'fotostudio';
         $user = getenv('DB_USERNAME') ?: 'root';
         $pass = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
-        return new PDO("mysql:host=$host;dbname=$name", $user, $pass);
+        /* charset=utf8mb4 stellt sicher, dass Umlaute korrekt gespeichert und
+           gelesen werden (sonst latin1-Verbindung -> mögliche Mojibake). */
+        return new PDO("mysql:host=$host;dbname=$name;charset=utf8mb4", $user, $pass);
     } catch (PDOException $e) {
         die('Keine Verbindung zur Datenbank möglich: ' . $e->getMessage());
     }

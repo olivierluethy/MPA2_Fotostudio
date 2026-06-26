@@ -17,7 +17,7 @@ $user = getenv('DB_USERNAME') ?: 'root';
 $pass = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
 
 try {
-    $pdo = new PDO("mysql:host=$host", $user, $pass, [
+    $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]);
 } catch (Throwable $e) {
