@@ -1,71 +1,86 @@
-# MPA_Fotostudio
-Ein Projekt für die Mini PA.
+<div align="center">
+  <img src="assets/icon.png" alt="Fotostudio logo" width="140" />
+  <h1>Fotostudio</h1>
+  <p><b>A photo library web app for a photography studio.</b><br/>Upload, describe and manage photos with per-image metadata and visibility, a public gallery, and user administration.</p>
+  <p>
+    <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
+    <img alt="PHP" src="https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white">
+    <img alt="MySQL" src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white">
+    <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white">
+    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black">
+  </p>
+</div>
 
-## Aufgabenstellung
-Ein Fotograf möchte für sein Studio und auch Privat eine WebApp, um all seine Bilder zu speichern und verwalten zu können. Auf der Webseite kann man, wenn man angemeldet ist, neue Bilder hochladen die dann gespeichert werden. Zu jedem Bild können noch folgende Informationen erfasst werden: Titel, optionale Beschreibung, Datum, Ort und ob das Bild öffentlich einsehbar sein sollte. Denn neue Einträge kann man nur erfassen, wenn man angemeldet ist. Auch sieht man nur alle Bilder in der Datenbank, wenn man angemeldet ist. Denn private Fotos sollen nicht öffentlich einsehbar sein. Wenn man nicht angemeldet ist, sieht man einfach auf der Startseite die Gallerie mit den öffentlichen Bildern. In der Applikation soll es möglich sein, alle Benutzer zu verwalten und auch welche neu hinzuzufügen. Dazu soll die ganze Webseite responsiv sein und mit allen Bildgrössen klar kommen.
+---
 
-## Bewertung
-Bewertet wird nach dem vollen Umfang des Kriterienkatalogs Teil A und B von der PA 2022 bewertet. Zusätzlich werden wir die Code-Qualität anhand folgender dieser individuellen Kriterien bewertet:
-121 - Software Ergonomie
-123 - Kommentare
-125 - Gliederung des Programms
-164 - Fehlerbehandlung
-166 - Lesbarer Code
-Individuelle Kriterien sind Kriterien, die der Betrieb zusätzlich zu den schon vorhandenen, nicht verhandelbaren, Standardkriterien stellen muss. Diese sind mehr auf die Arbeit zugeschnitten, wobei die Standardkriterien mehr allgemein sind. In der PA wird es noch einen Teil C geben, der die Präsentation bewertet. Dazu werden es sieben individuelle Kriterien sein. Nachfolgend unsere Firmenvorgaben zum Codestyle:
-Die Beschriftung erfolgt im üblichen Standard der verwendeten Programmiersprache. Wenn es unklar ist, werden sämtliche Variablen, Funktionen und Methoden in camelCase deklariert, ausgenommen Klassen in PascalCase.
-Sämtliche Namen von Variablen, Funktionen, Methoden und Klassen sind so gewählt, dass diese auf ihren Nutzen hinweisen.
-Variablen sind zuoberst bei Funktionen und Methoden deklariert.
-Der Code ist sinnvoll eingerückt und nicht alles auf einer Linie. Innerhalb des Projekts sind die Einrückungszeichen überall gleich, entweder Tabs oder Spaces.
+Fotostudio is a web application for a photographer who wants to store and manage
+all their photos — both studio and private — in one place. Signed-in users upload
+images and capture a title, an optional description, a date, a location and whether
+the photo should be publicly visible. Visitors who are not logged in only see the
+public gallery on the start page; private photos stay private. Signed-in users can
+browse every photo and manage the studio's user accounts. The whole interface is
+responsive and copes with any image size.
 
-## Verwendete Quellen
-Für Rahmen:
-https://freefrontend.com/css-frames/
+Built as a "Mini PA" apprenticeship project on a hand-rolled PHP MVC structure.
 
-Blur image:
-https://blog.hubspot.com/website/opacity-css
+## Features
 
-Logo:
-https://www.maclife.de/media/maclife/imagecache/appstore/953286746/i-eada8abc836888bb657abf9f00196a39.png
+- **Upload photos** with metadata: title, optional description, date, location and a public/private flag.
+- **Public gallery** on the start page for visitors; the full library is visible only when signed in.
+- **Edit and delete** existing photos, including an in-place edit modal.
+- **User management** — list, add, edit and remove studio user accounts.
+- **Authentication** with hashed passwords (PHP `password_hash` / `password_verify`).
+- **Location autocomplete** and client-side form validation.
+- **Responsive layout** that adapts to every image size.
 
-Für box-shadow:
-https://getcssscan.com/css-box-shadow-examples
+## Tech stack
 
-For shadow on text:
-https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_text-shadow
+- PHP on a custom MVC structure (`core/Router.php`, `core/bootstrap.php`, `app/Controllers`, `app/Models`, `app/Views`)
+- MySQL 8 (schema in `Fotostudio.sql`)
+- Apache with `.htaccess` URL rewriting
+- Vanilla JavaScript (`public/js/`) for validation, autocomplete and UI
+- Docker / Docker Compose (PHP-Apache + MySQL + phpMyAdmin)
 
-View for Login Page:
-https://codepen.io/clln/pen/vYJWLqE
+## Getting started (Docker)
 
-Für Tabelle in Benutzerverwaltung:
-https://www.w3schools.com/css/css_table_style.asp
+Requires Docker + Docker Compose. From the project root:
 
-Für Modal:
-https://www.w3schools.com/howto/howto_css_modals.asp
+```bash
+docker compose up --build        # add -d to run in the background
+```
 
-Für box-shadow im modal:
-https://stackoverflow.com/questions/6821295/add-css-box-shadow-around-the-whole-div
+The first start builds the image, initialises the database and seeds mock data
+(8 users + 24 photos) automatically. Then open:
 
-Um das eingegebene Passwort zu prüfen nach dem in der Datenbank:
-https://stackoverflow.com/questions/30279321/how-to-use-phps-password-hash-to-hash-and-verify-passwords
+| Service      | URL                    | Access                                              |
+|--------------|------------------------|-----------------------------------------------------|
+| **Web app**  | http://localhost:8800  | see login below                                     |
+| **phpMyAdmin** | http://localhost:8801 | server `db`, user `root`, empty password (auto-login) |
+| MySQL        | `localhost:3400`       | user `root`, no password (for external tools)       |
 
-Formular für Benutzer bearbeitung:
-https://codepen.io/aklima/pen/bxqXLO
+All mock users share the password **`fotostudio`** and sign in with their email
+address (e.g. `admin@fotostudio.test`). Ports can be adjusted in
+`docker-compose.yml`. See [`DOCKER.md`](DOCKER.md) for the full list of accounts
+and commands.
 
-Kann man Margin-min oder max machen:
-https://stackoverflow.com/questions/38078957/can-we-define-min-margin-and-max-margin-max-padding-and-min-padding-in-css
+## Project structure
 
-Um ein Wert in das Download Feld reinzutun - Kann man nicht aus Sicherheitsgründen:
-https://stackoverflow.com/questions/1696877/how-to-set-a-value-to-a-file-input-in-html
+```
+index.php            Front controller + route table
+core/                Router, bootstrap, database, helpers
+app/Controllers/     BilderController, BenutzerController, LoginController
+app/Models/          Bilder, Benutzer (DB access)
+app/Views/           HTML views (gallery, upload/edit, user admin, login)
+public/js/           Client-side validation, autocomplete and UI scripts
+docker/              Dockerfile, Apache config, init/seed SQL
+Fotostudio.sql       Database schema
+```
 
-Responsive Table:
-https://www.w3schools.com/howto/howto_css_table_responsive.asp
+## License
 
-Responsive Textarea:
-https://stackoverflow.com/questions/39068128/how-can-i-make-a-textarea-that-fits-within-the-width-of-the-current-viewport
+Released under the [MIT License](LICENSE) © 2026 Olivier Lüthy. You're free to use, modify and distribute this
+software, including commercially, as long as the copyright notice and license are included.
 
-## Lösungen zu Problemen
-Bilder die hochgeladen wurden auch anzeigen:
-- Die Funktion "Bind Param" braucht kein SQL Injection und daher auch kein Backslash. Wird vom System nicht entfernt, sondern bleibt bestehen!
-Bei "mysqli" braucht man sowas. Daher funktioniert es beim Beispiel im Git, aber nicht im MVC. Stöhrt aus irgendeinem Grund bei der "mysqli" Funktion nicht. Der Backslash wird irgendwie automatisch entfernt.
-Dies ist aber nur eine Vermutung.
-https://www.php.net/manual/de/function.addslashes.php
+## Author
+
+Built by **Olivier Lüthy** — [GitHub](https://github.com/olivierluethy).
